@@ -1,0 +1,205 @@
+.flip-clock-container {
+  direction: ltr;
+  font-family: Arial;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  --flip-bg-color: #5d8834;
+  --flip-text-color: #fff;
+  --flip-dots-color: #333;
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  margin-top: 50px;
+}
+.flip-clock-container * {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+.flip-clock-container *::before, .flip-clock-container *::after {
+  box-sizing: border-box;
+}
+.flip-clock-container [class|=flip-item] {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.flip-clock-container [class|=flip-item]::before {
+  content: ":";
+  font-family: Consolas;
+  font-size: 80px;
+  color: #5d8834;
+  line-height: 130px;
+  margin: -30px -10px;
+}
+@media (max-width: 768px) {
+  .flip-clock-container [class|=flip-item]::before {
+    line-height: 110px;
+    font-size: 50px;
+  }
+}
+.flip-clock-container [class|=flip-item]:first-child::before {
+  content: none;
+}
+.flip-clock-container [class|=flip-item] .flip-digit {
+  width: 60px;
+  height: 150px;
+  position: relative;
+  margin: 0 5px;
+}
+@media (max-width: 768px) {
+  .flip-clock-container [class|=flip-item] .flip-digit {
+    width: 30px;
+    height: 100px;
+  }
+}
+@media (max-width: 350px) {
+  .flip-clock-container [class|=flip-item] .flip-digit {
+    width: 25px;
+  }
+}
+.flip-clock-container [class|=flip-item] .flip-digit > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 53%;
+  display: block;
+  perspective: 300px;
+}
+.flip-clock-container [class|=flip-item] .flip-digit > span::after, .flip-clock-container [class|=flip-item] .flip-digit > span::before {
+  content: attr(data-digit);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  font-size: 60px;
+  font-weight: bolder;
+  text-align: center;
+  color: var(--flip-text-color);
+  background-color: var(--flip-bg-color);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+@media (max-width: 768px) {
+  .flip-clock-container [class|=flip-item] .flip-digit > span::after, .flip-clock-container [class|=flip-item] .flip-digit > span::before {
+    font-size: 25px;
+  }
+}
+.flip-clock-container [class|=flip-item] .flip-digit > span::before {
+  top: 0;
+  line-height: 83px;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid white;
+  transform-origin: bottom;
+}
+@media (max-width: 768px) {
+  .flip-clock-container [class|=flip-item] .flip-digit > span::before {
+    line-height: 57px;
+  }
+}
+.flip-clock-container [class|=flip-item] .flip-digit > span::after {
+  bottom: 0;
+  line-height: 2px;
+  border-radius: 0 0 10px 10px;
+  border-top: 1px solid white;
+  transform-origin: top;
+}
+@media (max-width: 768px) {
+  .flip-clock-container [class|=flip-item] .flip-digit > span::after {
+    line-height: 5px;
+  }
+}
+.flip-clock-container [class|=flip-item] .flip-digit.flipping .flip-digit-next {
+  z-index: 0;
+  animation: afterZIndexAnim 0.9s linear forwards;
+}
+.flip-clock-container [class|=flip-item] .flip-digit.flipping .flip-digit-next::before {
+  animation: afterUpShadowAnim 0.9s linear forwards;
+}
+.flip-clock-container [class|=flip-item] .flip-digit.flipping .flip-digit-next::after {
+  animation: afterFlipAnim 0.9s linear forwards, afterDownShadowAnim 0.9s linear forwards;
+}
+.flip-clock-container [class|=flip-item] .flip-digit.flipping .flip-digit-current {
+  z-index: 1;
+  animation: currentZIndexAnim 0.9s linear forwards;
+}
+.flip-clock-container [class|=flip-item] .flip-digit.flipping .flip-digit-current::before {
+  animation: currentFlipAnim 0.9s linear forwards, currentUpShadowAnim 0.9s linear forwards;
+}
+.flip-clock-container [class|=flip-item] .flip-digit.flipping .flip-digit-current::after {
+  animation: currentDownShadowAnim 0.9s linear forwards;
+}
+
+@keyframes afterZIndexAnim {
+  0% {
+    z-index: 0;
+  }
+  100% {
+    z-index: 1;
+  }
+}
+@keyframes currentZIndexAnim {
+  0% {
+    z-index: 1;
+  }
+  100% {
+    z-index: 0;
+  }
+}
+@keyframes afterFlipAnim {
+  0% {
+    transform: rotateX(180deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
+@keyframes afterUpShadowAnim {
+  0% {
+    box-shadow: inset 0 -100px 20px -10px black;
+  }
+  100% {
+    box-shadow: inset 0 0 20px -10px rgba(0, 0, 0, 0);
+  }
+}
+@keyframes afterDownShadowAnim {
+  0% {
+    box-shadow: inset 0 100px 20px -10px black;
+  }
+  100% {
+    box-shadow: inset 0 0 20px -10px rgba(0, 0, 0, 0);
+  }
+}
+@keyframes currentFlipAnim {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
+}
+@keyframes currentUpShadowAnim {
+  0% {
+    box-shadow: inset 0 0 15px -10px rgba(0, 0, 0, 0);
+  }
+  50% {
+    box-shadow: inset 0 -50px 25px -10px black;
+  }
+  100% {
+    box-shadow: inset 0 -100px 25px -10px black;
+  }
+}
+@keyframes currentDownShadowAnim {
+  0% {
+    box-shadow: inset 0 0 15px -10px rgba(0, 0, 0, 0);
+  }
+  50% {
+    box-shadow: inset 0 50px 25px -10px black;
+  }
+  100% {
+    box-shadow: inset 0 100px 25px -10px black;
+  }
+}/*# sourceMappingURL=flip-clock.css.map */

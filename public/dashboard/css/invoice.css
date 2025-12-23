@@ -1,0 +1,135 @@
+        body {
+            background-color: #fff !important;
+        }
+
+        .invoice {
+            font-size: 4vh;
+            font-weight: bolder;
+            text-decoration: underline solid orange;
+        }
+
+        .invoice_no {
+            font-size: 1.5vh;
+            font-weight: bolder;
+            margin: 0px;
+        }
+
+        .summery_copy {
+            width: auto;
+        }
+
+        .sub_total {
+            font-size: 1.5vh;
+            margin: 0px;
+        }
+
+        .site-link {
+            font-size: 10px;
+            margin: 0px;
+            border-top: 3px solid #94d4db;
+            padding-top: 3px;
+        }
+
+        .site-link span {
+            text-align: left;
+            padding: 0px 10px;
+        }
+
+        .client-details {
+            font-size: 1.5vh;
+            margin: 0px;
+            border-bottom: 1px dashed black;
+        }
+
+        .invoice_to {
+            font-size: 1.5vh;
+            font-weight: bold;
+            margin: 0px;
+        }
+
+        #td_color {
+            background-color: #94d4db !important;
+        }
+
+        @media screen and (min-width: 300px) and (max-width: 760px) {
+            .invoice {
+                font-size: 2vh;
+                font-weight: bolder;
+                text-decoration: underline solid orange;
+            }
+
+            .invoice_no {
+                font-size: 1vh;
+                font-weight: bolder;
+            }
+
+            .sub_total {
+                font-size: 1vh;
+            }
+
+
+
+            .client-details {
+                font-size: 1vh;
+                margin: 0px;
+                font-weight: bold;
+                border: 0px !important;
+            }
+
+            .invoice_to {
+                font-size: 1vh;
+                font-weight: bold;
+                margin: 0px;
+            }
+
+            table {
+                font-size: 1vh;
+            }
+
+            td {
+                height: 50px;
+            }
+        }
+
+        @media print {
+            #footer {
+                position: relative !important;
+                bottom: 10px !important;
+            }
+        }
+
+        .table thead tr th {
+            padding: 4px !important;
+            font-size: 10px;
+        }
+
+        .order-item-table thead tr th strong {
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        thead,
+        tbody,
+        tfoot,
+        tr,
+        td,
+        th {
+            vertical-align: middle !important;
+        }
+
+        .table th,
+        .table td {
+            font-size: 14px;
+        }
+
+        .table th strong,
+        .table td strong {
+            font-size: 15px;
+            padding: 10px 0px 4px;
+            padding-top: 0px;
+        }
+
+        .table tfoot tr th {
+            padding: 4px !important;
+            font-size: 14px;
+        }

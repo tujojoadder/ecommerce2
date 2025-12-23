@@ -1,0 +1,120 @@
+.btn i.fas.fa-plus {
+    line-height: 18px;
+}
+
+.input-group-text i {
+    font-size: 18;
+    width: 18px;
+}
+
+#ui-datepicker-div {
+    z-index: 1000000000 !important;
+}
+
+.tooltip {
+    z-index: 1000000000 !important;
+}
+
+.modal .select2 {
+    z-index: 1040000 !important;
+}
+
+.fcsm {
+    height: calc(1.5em + 0.5rem + 2px) !important;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.76562rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+.modal-backdrop {
+    background-color: #0000008f !important;
+}
+
+.app-content {
+    min-height: auto !important;
+}
+
+.app-sidebar::-webkit-scrollbar {
+    width: 0px !important;
+}
+
+.dt-buttons.btn-group {
+    position: relative !important;
+}
+
+.dt-buttons .btn {
+    background: #7987a1 !important;
+    border-color: #7987a1 !important;
+    margin-right: 5px !important;
+}
+
+.support-shortcut-btn-box {
+    /* width: 40px !important; */
+    background: #ff6d4a;
+    color: #fff;
+    font-family: "Noto Sans Bengali", sans-serif;
+    animation: animate-pulse 3s linear infinite;
+    overflow: hidden;
+}
+.support-shortcut-btn-box:hover {
+    width: 100% !important;
+}
+@keyframes animate-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 109, 74, 0.7),
+            0 0 0 0 rgba(255, 109, 74, 0.7);
+    }
+    20% {
+        box-shadow: 0 0 0 30px rgba(255, 109, 74, 0),
+            0 0 0 0 rgba(255, 109, 74, 0.7);
+    }
+    40% {
+        box-shadow: 0 0 0 30px rgba(255, 109, 74, 0),
+            0 0 0 30px rgba(255, 109, 74, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 109, 74, 0),
+            0 0 0 30px rgba(255, 109, 74, 0);
+    }
+}
+
+.ui-icon-circle-triangle-w,
+.ui-icon-circle-triangle-e {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ui-icon-circle-triangle-w:hover,
+.ui-icon-circle-triangle-e:hover {
+    background-color: transparent;
+}
+
+.ui-datepicker-prev::before {
+    content: "◀" !important;
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+.ui-datepicker-next::before {
+    content: "◀" !important;
+    font-size: 16px;
+    margin-left: 8px;
+    rotate: 180deg;
+}
+
+.ui-datepicker-title {
+    width: 70% !important;
+}
+
+#file-export-datatable_processing {
+    position: fixed !important;
+}

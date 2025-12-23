@@ -1,0 +1,206 @@
+:root {
+    --light-color: #ffff;
+    --primary-color: #5555A5;
+    --success-color: #01B636;
+    --danger-color: #e74c3c;
+    --warning-color: #e7b13c;
+    --text-color: #333333;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/public/frontend/fonts/Gotham-Black.otf') format('otf'),
+         url('/public/frontend/fonts/Gotham-Light.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/public/frontend/fonts/Gotham-Bold.otf') format('otf'),
+        url('/public/frontend/fonts/Gotham-Black.otf') format('otf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/public/frontend/fonts/Gotham-BookItalic.otf') format('otf'),
+        url('/public/frontend/fonts/Gotham-Black.otf') format('otf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'SolaimanLipi';
+    src: url('/public/frontend/fonts/SolaimanLipi.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.navbar-brand img{
+    width: 65px;
+}
+
+.navbar{
+    font-family: 'Gotham', sans-serif;
+    font-weight: 700;
+}
+
+.navbar a{
+    color: var(--primary-color);
+    transition: 0.2s ease-in-out;
+    font-family: 'Gotham', sans-serif;
+    font-weight: 700;
+}
+
+.navbar a:hover{
+    color: var(--success-color);
+}
+
+.navbar a:active{
+    color: white;
+}
+
+#products-links img{
+    transition: 0.2s ease-in-out;
+}
+
+#products-links img:hover{
+    transform: scale(1.1);
+}
+
+#our-products-btn i{
+    transition: 0.2s ease-in-out;
+}
+
+#our-products-btn:hover i{
+    rotate: 90deg;
+}
+
+#products-dropdown {
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: -300px;
+    transition: 0.5s ease;
+    transition-delay: 0.2s;
+    border-radius: 0;
+    margin-left: -20px;
+}
+
+#products-dropdown a{
+    font-size: 14px;
+    font-family: 'Gotham', sans-serif;
+}
+
+#our-products-btn:hover + #products-dropdown,
+#products-dropdown:hover {
+    max-height: 200px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    opacity: 1;
+}
+
+.greet{
+    font-family: 'SolaimanLipi', sans-serif;
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 55px;
+}
+
+
+.animated-tag{
+    rotate: -30deg;
+    width: 185.96px;
+    position: absolute;
+}
+
+.animated-blast{
+    position: absolute;
+    rotate: -30deg;
+    width: 185.96px;
+}
+
+.item{
+    height: 100px !important;
+    width: 100px !important;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.item img{
+    height: 60% !important;
+    width: 60% !important;
+}
+
+.item-span{
+    font-family: 'SolaimanLipi', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.products-thumbnails img {
+    height: 40px !important;
+    width: 40px !important;
+    border-radius: 6px;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 15px;
+    filter: grayscale(100%) brightness(1000%);
+}
+
+.products-thumbnails div{
+    transition: 0.2s ease-in-out;
+}
+
+.products-thumbnails div:hover img{
+    filter: saturate(100%);
+    transform: scale(1.5);
+}
+
+.products-thumbnails div:hover{
+    background-color: #cacaca !important;
+}
+
+.products-thumbnails div p{
+    transition: 0.2s ease-in-out;
+}
+
+.products-thumbnails div:hover p{
+    rotate: 3deg;
+}
+
+.demo-btn{
+    background-color: var(--light-color);
+    transition: 0.2s ease-in-out;
+}
+
+.demo-btn i{
+    transition: 0.2s ease-in-out;
+}
+
+.demo-btn:hover{
+    background-color: var(--success-color);
+    color: white;
+}
+
+.demo-btn:hover i{
+    margin-left: 20px;
+    color: var(--light-color);
+}
+
+.features img{
+    transition: 0.2s ease-in-out;
+}
+
+.features:hover img{
+    transform: scale(1.2);
+    transform-style: preserve-3d;
+}
+
+@media screen and (orientation: landscape) {
+    .carousel img {
+        height: 500px !important;
+    }
+}

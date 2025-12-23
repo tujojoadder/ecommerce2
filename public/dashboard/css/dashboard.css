@@ -1,0 +1,59 @@
+.square-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Makes the card a square */
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+
+.square-card .card-body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.square-card:hover .card-overlay {
+    pointer-events: all;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.square-card:hover img {
+    transform: scale(1.5);
+}
+
+
+.card-overlay i {
+    background: #ffffffbb;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-overlay i:hover {
+    background: #9c9c9cd2 !important;
+    color: #fff !important;
+    cursor: pointer;
+}
