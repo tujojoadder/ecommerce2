@@ -155,9 +155,11 @@
                                         </div>
                                         <div class="tooltip-wrapper">
                                             <div onclick="openCart()" class="icon">
-                                                <i class="fa-solid fa-cart-shopping"></i>
+                                                <i class="fa-solid fa-cart-shopping"
+                                                    onclick="addToCart({{ $product->id }})"></i>
                                             </div>
-                                            <div class="my-tooltip">Add to Cart</div>
+                                            <div class="my-tooltip">Add to Cart
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +209,8 @@
                                         </div>
                                         <div class="tooltip-wrapper">
                                             <div onclick="openCart()" class="icon">
-                                                <i class="fa-solid fa-cart-shopping"></i>
+                                                <i class="fa-solid fa-cart-shopping"
+                                                    onclick="addToCart({{ $product->id }})"></i>
                                             </div>
                                             <div class="my-tooltip">Add to Cart</div>
                                         </div>
@@ -259,7 +262,8 @@
                                         </div>
                                         <div class="tooltip-wrapper">
                                             <div onclick="openCart()" class="icon">
-                                                <i class="fa-solid fa-cart-shopping"></i>
+                                                <i class="fa-solid fa-cart-shopping"
+                                                    onclick="addToCart({{ $product->id }})"></i>
                                             </div>
                                             <div class="my-tooltip">Add to Cart</div>
                                         </div>
@@ -352,7 +356,8 @@
                                     </div>
                                     <div class="tooltip-wrapper">
                                         <div onclick="openCart()" class="icon">
-                                            <i class="fa-solid fa-cart-shopping"></i>
+                                            <i class="fa-solid fa-cart-shopping"
+                                                onclick="addToCart({{ $product->id }})"></i>
                                         </div>
                                         <div class="my-tooltip">Add to Cart</div>
                                     </div>

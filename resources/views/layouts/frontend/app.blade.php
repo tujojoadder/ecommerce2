@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/home.css') }}" />
@@ -34,6 +35,9 @@
     <!-- flip-clock cdn -->
     <script src="{{ asset('frontend/assets/js/flip-clock.js') }}"></script>
     <!-- flip-clock cdn -->
+    {{-- sweet 2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <title>SolPlant</title>
     @stack('styles')
@@ -73,7 +77,7 @@
 
                     if (data.length != 0) {
                         $.each(data, function(index, value) {
-                            // ✅ Add to total
+                            //  Add to total
                             total += (parseFloat(value.price) * parseInt(value.quantity));
                             html += '<div class="cart-list-product">';
 
@@ -164,48 +168,48 @@
                 url: url,
                 success: function(data) {
                     if (data[0] == 'success') {
-                        Swal.fire({
-                            title: '<strong>Added to Cart</strong>',
-                            html: `
-                                <div style="position: relative; margin: 20px 0;">
-                                    <img src="{{ asset('frontend/assets/img/grocery.gif') }}" 
-                                        style="width: 120px; height: 120px;"
-                                        alt="Cart animation">
-                                    <div style="margin-top: 15px; font-size: 16px; color: #28a745;font-weight:900">
-                                        ✓ Product added successfully!
-                                    </div>
-                                </div>
-                            `,
-                            showConfirmButton: false,
-                            position: 'center',
-                            timer: 2000,
-                            backdrop: true,
-                            customClass: {
-                                popup: 'swal-custom-popup'
-                            }
-                        });
+                        // Swal.fire({
+                        //     title: '<strong>Added to Cart</strong>',
+                        //     html: `
+                    //         <div style="position: relative; margin: 20px 0;">
+                    //             <img src="{{ asset('frontend/assets/img/grocery.gif') }}" 
+                    //                 style="width: 120px; height: 120px;"
+                    //                 alt="Cart animation">
+                    //             <div style="margin-top: 15px; font-size: 16px; color: #28a745;font-weight:900">
+                    //                 ✓ Product added successfully!
+                    //             </div>
+                    //         </div>
+                    //     `,
+                        //     showConfirmButton: false,
+                        //     position: 'center',
+                        //     timer: 2000,
+                        //     backdrop: true,
+                        //     customClass: {
+                        //         popup: 'swal-custom-popup'
+                        //     }
+                        // });
                         addCartData();
                     } else if (data[0] == 'increase') {
-                        Swal.fire({
-                            title: '<strong>Added to Cart</strong>',
-                            html: `
-                                <div style="position: relative; margin: 20px 0;">
-                                    <img src="{{ asset('frontend/assets/img/grocery.gif') }}" 
-                                        style="width: 120px; height: 120px;"
-                                        alt="Cart animation">
-                                    <div style="margin-top: 15px; font-size: 16px; color: #28a745;font-weight:900">
-                                        ✓ Product Quantity Increased!
-                                    </div>
-                                </div>
-                            `,
-                            showConfirmButton: false,
-                            position: 'center',
-                            timer: 2000,
-                            backdrop: true,
-                            customClass: {
-                                popup: 'swal-custom-popup'
-                            }
-                        });
+                        // Swal.fire({
+                        //     title: '<strong>Added to Cart</strong>',
+                        //     html: `
+                    //         <div style="position: relative; margin: 20px 0;">
+                    //             <img src="{{ asset('frontend/assets/img/grocery.gif') }}" 
+                    //                 style="width: 120px; height: 120px;"
+                    //                 alt="Cart animation">
+                    //             <div style="margin-top: 15px; font-size: 16px; color: #28a745;font-weight:900">
+                    //                 ✓ Product Quantity Increased!
+                    //             </div>
+                    //         </div>
+                    //     `,
+                        //     showConfirmButton: false,
+                        //     position: 'center',
+                        //     timer: 2000,
+                        //     backdrop: true,
+                        //     customClass: {
+                        //         popup: 'swal-custom-popup'
+                        //     }
+                        // });
                         addCartData();
                     } else {
                         Swal.fire({
