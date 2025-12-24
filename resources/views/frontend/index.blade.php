@@ -164,20 +164,20 @@
                             </div>
 
                             <div class="best-card-text">
-                                <div class="best-card-star">
+                                {{--    <div class="best-card-star">
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
-                                </div>
+                                </div> --}}
 
                                 <p class="card-name">
                                     <a href="/">{{ $product->name }}</a>
                                 </p>
                                 <p class="card-price">
-                                    $99.00-
-                                    <span class="text-decoration-line-through">$79.20</span>
+                                    {{ $product->selling_price }}৳ -
+                                    <span class="text-decoration-line-through"> {{ $product->main_price }}৳ </span>
                                 </p>
                             </div>
                         </div>
@@ -216,20 +216,20 @@
                             </div>
 
                             <div class="best-card-text">
-                                <div class="best-card-star">
+                                {{--    <div class="best-card-star">
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
-                                </div>
+                                </div> --}}
 
                                 <p class="card-name">
                                     <a href="/">Curabitur a Purus</a>
                                 </p>
                                 <p class="card-price">
-                                    $99.00-
-                                    <span class="text-decoration-line-through">$79.20</span>
+                                    {{ $product->selling_price }}৳ -
+                                    <span class="text-decoration-line-through">{{ $product->main_price }}৳ </span>
                                 </p>
                             </div>
                         </div>
@@ -268,20 +268,20 @@
                             </div>
 
                             <div class="best-card-text">
-                                <div class="best-card-star">
+                                {{--   <div class="best-card-star">
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
                                     <i class="fa-sharp fa-solid fa-star"></i>
-                                </div>
+                                </div> --}}
 
                                 <p class="card-name">
                                     <a href="/">Convallis Quam Sit</a>
                                 </p>
                                 <p class="card-price">
-                                    $99.00-
-                                    <span class="text-decoration-line-through">$79.20</span>
+                                    {{ $product->selling_price }}৳ -
+                                    <span class="text-decoration-line-through">{{ $product->main_price }}৳ /span>
                                 </p>
                             </div>
                         </div>
