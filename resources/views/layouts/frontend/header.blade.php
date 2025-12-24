@@ -109,7 +109,7 @@
                                 <li>
                                     <i class="fa-solid fa-cart-shopping"></i>
 
-                                    <div class="qty">3</div>
+                                    <div class="qty">0</div>
                                 </li>
                             </a>
 

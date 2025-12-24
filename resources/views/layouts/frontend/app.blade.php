@@ -77,61 +77,77 @@
 
                     if (data.length != 0) {
                         $.each(data, function(index, value) {
-                            //  Add to total
+                            // Add to total
                             total += (parseFloat(value.price) * parseInt(value.quantity));
-                            html += '<div class="cart-list-product">';
 
-                            html +=
-                                '<a class="float-right remove-cart" href="javascript:void(0)" ' +
-                                'onclick="removeCartData(' + value.product.id + ')">' +
-                                '<i class="fas fa-trash remove-icon" style="color:red"></i></a>';
+                            html += '<li>';
+                            html += '<a href="javascript:void(0)">';
 
-                            html +=
-                                '<img class="img-fluid" style="height:80px; object-fit:contain" ' +
-                                'src="' + base_url + value.product.image + '" ' +
-                                'alt="' + value.product.name + '">';
-
-                            // 🔖 Optional discount badge
-                            if (value.product.discount) {
-                                html += '<span class="badge badge-success">' + value.product.discount +
-                                    '% OFF</span>';
-                            }
-
-                            html += '<h5><a href="#">' + strLimit(value.product.name, 30) + '</a></h5>';
-                            html += '<h6><strong>Quantity:</strong> ' + value.quantity + '</h6>';
-                            html += '<p class="offer-price mb-0">' + (value.price * value.quantity)
-                                .toFixed(2) + ' ' + currency + '</p>';
-
-
-                            // Quantity Update Section
-                            html +=
-                                '<div class="quantity-control" style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">';
-                            html +=
-                                '<button class="btn btn-sm btn-secondary" onclick="updateQuantity(' +
-                                value.product.id + ', -1)">-</button>';
-                            html +=
-                                '<input type="number"  class="form-control text-center" id="quantity_' +
-                                value.product.id + '" value="' + value.quantity +
-                                '" min="1" max="15" style="width: 60px;" onchange="updateQuantityInput(' +
-                                value
-                                .product.id + ', this.value)">';
-                            html +=
-                                '<button class="btn btn-sm btn-secondary" onclick="updateQuantity(' +
-                                value.product.id + ', 1)">+</button>';
+                            // Product Image
+                            html += '<div class="part-img">';
+                            html += '<img src="' + base_url + value.product.image + '" alt="' + value
+                                .product.name + '" />';
                             html += '</div>';
 
+                            // Product Text Info
+                            html += '<div class="part-txt">';
+                            html += '<span class="heading5">' + strLimit(value.product.name, 30) +
+                                '</span>';
 
+                            // Quantity and Price with Controls
+                            html += '<div style="display: flex; align-items: center; gap: 8px;">';
+
+                            // Minus Button
+                            html += '<button class="qty-btn" onclick="updateQuantity(' + value.product
+                                .id +
+                                ', -1)" style="width: 20px; height: 20px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center;">-</button>';
+
+                            // Quantity Input Field
+                            html += '<input type="number" id="quantity_' + value.product.id +
+                                '" value="' + value.quantity +
+                                '" min="1" max="15" style="width: 40px; text-align: center; border: 1px solid #ddd; border-radius: 4px;" onchange="updateQuantityInput(' +
+                                value.product.id + ', this.value)" />';
+
+                            // Plus Button
+                            html += '<button class="qty-btn" onclick="updateQuantity(' + value.product
+                                .id +
+                                ', 1)" style="width: 20px; height: 20px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center;">+</button>';
+
+                            html += (value.quantity) +
+                                '<i class="fa-solid fa-xmark"></i> {{ config('company.currency_symbol') }}' +
+                                (value
+                                    .price * value
+                                    .quantity).toFixed(2);
+                            html += '</div>';
 
                             html += '</div>';
 
+                            html += '</a>';
+
+                            // Delete Button
+                            html += '<button class="delete-btn" onclick="removeCartData(' + value
+                                .product.id + ')">';
+                            html += '<i class="fa-solid fa-trash-can"></i>';
+                            html += '</button>';
+
+                            html += '</li>';
                         });
 
                         $('.minicart-items').html(html);
-
                         $('.cartTotalAmount').text(total.toFixed(2) + ' ' + currency);
+
+                        //  Top items number এবং dollar update
+                        $('.top-items-number p').text(data.length + ' Items');
+                        $('.top-item-dollar p').text(currency + total.toFixed(2));
+                        //qty (header)
+                        $('.qty').text(data.length);
+
                     } else {
                         $('.minicart-items').html('<li>No items in cart</li>');
                         $('.cartTotalAmount').text('0.00 ' + currency);
+                        //  Empty cart এর জন্য
+                        $('.top-items-number p').text('0 Items');
+                        $('.top-item-dollar p').text(currency + '0.00');
                     }
                 }
             });

@@ -151,62 +151,28 @@
 <div class="header-cart-wrap" id="headerCartWrap">
     <div onclick="closeCart()" class="cart-overlay"></div>
 
-    <div class="cart-list">
-        <div class="title">
+    <div class="cart-list d-flex flex-column vh-100">
+        <!-- Fixed Header -->
+        <div class="title border-bottom p-3 bg-white">
             <h3 class="heading3">Shopping Cart</h3>
             <button onclick="closeCart()" class="cart-close">
                 <i class="fa-regular fa-circle-xmark"></i>
             </button>
         </div>
-        <ul>
-            <li>
-                <a href="/">
-                    <div class="part-img">
-                        <img src="{{ asset('frontend/assets/images/products/1.png') }}" alt="Image" />
-                    </div>
-                    <div class="part-txt">
-                        <span class="heading5">Diamond wedding ring</span>
-                        <span>1 <i class="fa-solid fa-xmark"></i> $5.00</span>
-                    </div>
-                </a>
-                <button class="delete-btn">
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
-            </li>
-            <li>
-                <a href="/">
-                    <div class="part-img">
-                        <img src="{{ asset('frontend/assets/images/products/2.png') }}" alt="Image" />
-                    </div>
-                    <div class="part-txt">
-                        <span class="heading5">Living Summer Chair</span>
-                        <span>1 <i class="fa-solid fa-xmark"></i> $5.00</span>
-                    </div>
-                </a>
-                <button class="delete-btn">
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
-            </li>
-            <li>
-                <a href="/">
-                    <div class="part-img">
-                        <img src="{{ asset('frontend/assets/images/products/3.png') }}" alt="Image" />
-                    </div>
-                    <div class="part-txt">
-                        <span class="heading5">Wireless Headphone</span>
-                        <span>1 <i class="fa-solid fa-xmark"></i> $5.00</span>
-                    </div>
-                </a>
-                <button class="delete-btn">
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
-            </li>
+
+        <!-- Scrollable Items -->
+        <ul class="flex-grow-1 overflow-auto p-3">
+            <div class="minicart-items"></div>
         </ul>
-        <div class="total">
-            <p>Subtotal: <span>$15:00</span></p>
-        </div>
-        <div class="btn-box">
-            <a href="/" class="button-1">Checkout</a>
+
+        <!-- Fixed Footer -->
+        <div class="border-top p-3 bg-white">
+            <div class="total">
+                <p>Subtotal: <span class="cartTotalAmount">$0.00</span></p>
+            </div>
+            <div class="btn-box">
+                <a href="/checkout" class="button-1">Checkout</a>
+            </div>
         </div>
     </div>
 </div>
