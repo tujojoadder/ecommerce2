@@ -23,11 +23,19 @@ use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Laravel\Ui\Presets\Preset;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 const API_PATH_V1 = 'base/path/v1/api';
 
+
+if (! function_exists('text_limit')) {
+    function text_limit($text, $limit = 35)
+    {
+        return Str::limit($text, $limit, '...');
+    }
+}
 function softwareStatus()
 {
     try {
@@ -647,4 +655,3 @@ function convertSlugToTitle($slug)
 
     return $title;
 }
-

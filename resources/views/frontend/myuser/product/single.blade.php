@@ -2,413 +2,281 @@
 @section('title', 'Arha Shop')
 
 @section('content')
-<style>
-.img-zoom-wrapper{
-    display: flex;
-    gap: 15px;
-}
-.img-zoom-container {
-    position: relative;
-}
-.img-zoom-lens {
-    position: absolute;
-    border: 1px solid #d4d4d4;
-    width: 40px;
-    height: 40px;
-    transition: none;
-    pointer-events: none;
-}
-.img-zoom-result {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    border: 1px solid #d4d4d4;
-    width: 100%;
-    height: 500px;
-    background-repeat: no-repeat;
-    border-radius: 10px;
-    display: none;
-    transition: opacity 0.2s ease;
-    will-change: background-position;
-}
-.shop-detail-right {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-.product-info-detailed {
-    margin-top: 30px;
-}
+    <div class="product-details">
+        <div class="square"></div>
 
-/* Tabs wrapper */
-.product-info-detailed .nav-pills {
-    border-bottom: 2px solid #eee;
-    margin-bottom: 20px;
-}
-
-/* Tab item */
-.product-info-detailed .nav-pills > li {
-    margin-right: 10px;
-}
-
-/* Tab link */
-.product-info-detailed .nav-pills > li > a {
-    border-radius: 0;
-    color: #555;
-    font-weight: 600;
-    padding: 12px 18px;
-    background: transparent;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-/* Hover */
-.product-info-detailed .nav-pills > li > a:hover {
-    color: #0d6efd;
-    background: transparent;
-}
-
-/* Active tab */
-.product-info-detailed .nav-pills > li.active > a,
-.product-info-detailed .nav-pills > li.active > a:focus,
-.product-info-detailed .nav-pills > li.active > a:hover {
-    color: #0d6efd;
-    background: transparent;
-}
-
-/* Active underline */
-.product-info-detailed .nav-pills > li.active > a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 3px;
-    background: #0d6efd;
-}
-
-/* Tab content */
-.product-info-detailed .tab-content {
-    background: #fff;
-    border: 1px solid #eee;
-    padding: 20px;
-    border-radius: 6px;
-}
-
-/* Block title */
-.product-info-detailed .block-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #333;
-}
-
-/* Block content */
-.product-info-detailed .block-content {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #555;
-}
-</style>
-
-    <!-- body  -->
-    <section class="pt-3 pb-3 page-info section-padding border-bottom bg-white">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="{{ url('/') }}">
-                        <strong><span class="mdi mdi-home"></span> Home</strong>
-                    </a>
-                    <span class="mdi mdi-chevron-right"></span>
-                    <a href="#">{{ $item?->category?->name }}</a>
-                    {{-- <span class="mdi mdi-chevron-right"></span>
-                     <a href="#">Fruits</a> --}}
-                </div>
-            </div>
-        </div>
-    </section>
+            <!-- <div class="details d-flex justify-content-between"> -->
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="img-wrapper">
+                        <div class="slider-container">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div thumbsSlider="" class="swiper mySwiper">
+                                        <div class="swiper-wrapper">
 
-    <section class="shop-single section-padding pt-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="shop-detail-left">
-                        <div class="shop-detail-slider">
-                            <div class="favourite-icon">
-                                <a class="fav-btn" href="#" title="59% OFF">
-                                    <i class="mdi mdi-tag-outline"></i>
-                                </a>
-                            </div>
-
-                            <div class="img-zoom-wrapper">
-                                <div id="sync1">
-                                    <div class="item img-zoom-container">
-                                        <img src="{{ asset('storage/product/' . $item->image) }}"
-                                            class="img-fluid zoom-image"
-                                            alt="">
-                                    </div>
-
-                                    @foreach ($item->images as $images)
-                                        <div class="item img-zoom-container">
-                                            <img src="{{ asset('storage/product/subimages/' . $images->image) }}"
-                                                class="img-fluid zoom-image"
-                                                alt="" style="width: 100%;height: 100%">
+                                            <div class="swiper-slide">
+                                                <img src="{{ asset('storage/product/' . $item->image) }}">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="{{ asset('storage/product/' . $item->image) }}">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="{{ asset('storage/product/' . $item->image) }}">
+                                            </div>
+                                            {{--  @foreach ($item->images as $images)
+                                                <div class="swiper-slide">
+                                                    <img src="{{ asset('storage/product/subimages/' . $images->image) }}">
+                                                </div>
+                                            @endforeach --}}
                                         </div>
-                                    @endforeach
-                                </div>
-                            </div>
-
-
-                            <div id="sync2" class="owl-carousel">
-
-                                <div class="item">
-                                    <img src="{{ asset('storage/product/' . $item->image) }}" class="img-fluid img-center"
-                                        alt="">
-                                </div>
-                                @foreach ($item->images as $images)
-                                    <div class="item">
-                                        <img src="{{ asset('storage/product/subimages/' . $images->image) }}"
-                                            class="img-fluid img-center" alt="">
                                     </div>
-                                @endforeach
-                            </div>
+                                </div>
 
+                                <div class="col-9">
+                                    <div class="swiper mySwiper2">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img style="width: 507px; height:719px;"
+                                                    src="{{ asset('storage/product/' . $item->image) }}" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- </div> -->
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <!-- ONE zoom result for all images -->
-                    <div id="zoom-result" class="img-zoom-result"></div>
-                    <div class="shop-detail-right">
-                        <span
-                            class="badge badge-success">{{ round((($item->main_price - $item->selling_price) / $item->main_price) * 100) }}%OFF</span>
-                        <h2>{{ $item->name }}</h2>
-                        {{--    <h6>
-                            <strong><span class="mdi mdi-approval"></span> Available in</strong> - 500 gm
-                        </h6> --}}
-                        <p class="regular-price">
-                            <i class="mdi mdi-tag-outline"></i> MRP : ৳{{ $item->main_price }}
-                        </p>
-                        <p class="offer-price mb-0">
-                            Discounted price : <span class="text-success">৳{{ $item->selling_price }}</span>
-                        </p>
+                <div class="col-lg-5">
+                    <div class="content">
+                        <h3 class="heading3">{{ $item->name }}</h3>
 
-                        {{-- Add to cart--}}
-                        <button type="button" class="btn btn-secondary btn-lg" onClick="addToCart({{ $item->id }})">
-                            <i class="mdi mdi-cart-outline"></i> Add To Cart
-                        </button>
-                        <button type="button" class="btn btn-secondary btn-lg" onClick="buyNow({{ $item->id }})">
-                            <i class="mdi mdi-cart-outline"></i> Buy Now
-                        </button>
+                        <div class="rating d-flex align-items-center">
+                            {{--     <span><i class="fa-sharp fa-regular fa-star"></i></span>
+                            <span><i class="fa-sharp fa-regular fa-star"></i></span>
+                            <span><i class="fa-sharp fa-regular fa-star"></i></span>
+                            <span><i class="fa-sharp fa-regular fa-star"></i></span>
+                            <span><i class="fa-sharp fa-regular fa-star"></i></span>
 
-
-                        <div class="short-description">
-                            <h5>
-                                Quick Overview
-                                <p class="float-right">
-                                    {{--   Availability:
-                                    <span class="badge badge-success">In Stock</span> --}}
-                                </p>
-                            </h5>
-                            <p>
-                                <b>{{ $item->description }}
-                            </p>
-
+                            <div class="heading6 ml-5">No Reviews</div> --}}
                         </div>
 
-                        <h6 class="mb-3 mt-4">Why shop from Groci?</h6>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="feature-box">
-                                    <i class="mdi mdi-truck-fast"></i>
-                                    <h6 class="text-info">Free Delivery</h6>
-                                    <p>Lorem ipsum dolor...</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="feature-box">
-                                    <i class="mdi mdi-basket"></i>
-                                    <h6 class="text-info">100% Guarantee</h6>
-                                    <p>Rorem Ipsum Dolor sit...</p>
-                                </div>
-                            </div>
+                        <div class="price d-flex mb-20">
+                            <span class="line-through">{{ $item->main_price }}{{ config('company.currency_symbol') }}</span>
+
+                            <span>{{ $item->selling_price }}{{ config('company.currency_symbol') }}</span>
                         </div>
-                        <div class="product-info-detailed ">
 
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-pills" role="tablist">
-                                <li role="presentation" class="active"><a href="#description"  role="tab" data-toggle="tab">Product Details   </a></li>
-                                <li role="presentation"><a href="#tags"  role="tab" data-toggle="tab">Specification </a></li>
-                                <li role="presentation"><a href="#reviews"  role="tab" data-toggle="tab">reviews</a></li>
-                                <li role="presentation"><a href="#tab-cust"  role="tab" data-toggle="tab">Guarantees</a></li>
-                            </ul>
+                        <div class="paragraph mb-30">
+                            {{ $item->description }}
+                        </div>
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="description">
-                                    <div class="block-title">Product Details</div>
-                                    <div class="block-content">
-                                        {!! $item->information !!}
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="tags">
-                                    <div class="block-title">Specification</div>
-                                    <div class="block-content">
-                                        {!! $item->specification ?? '' !!}
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="reviews">
-                                    <div class="block-title">reviews</div>
-                                    <div class="block-content">
+                        <div class="pro-details">
+                            <div class="d-flex">
+                                <h4 class="heading4 mb-30">Category</h4>
+                                <h4 class="heading4 mb-30">{{ $item->category->name }}</h4>
+                            </div>
 
-                                    </div>
+                            <div class="d-flex quantity-wrapper mb-30 align-items-center">
+                                <h4 class="heading4">Quantity</h4>
+
+                                <div class="d-flex quantity">
+                                    <span class="quantity-down">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </span>
+                                    <input type="number" min="1" max="100" step="1" value="1"
+                                        readonly />
+                                    <span class="quantity-up">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </span>
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="tab-cust">
-                                    <div class="block-title">Guarantees</div>
-                                    <div class="block-content">
-                                        {!! $item->guarantee ?? '' !!}
-                                    </div>
+                            </div>
+
+                            <div class="d-flex align-items-center flex-wrap mb-30">
+                                <h4 class="heading4">Payment Method</h4>
+                                <div class="c-card mr-10">
+                                    <img src="{{ asset('frontend/assets/images/product-details/c-1.png') }}"
+                                        alt="" />
+                                </div>
+                                <div class="c-card mr-10">
+                                    <img src="{{ asset('frontend/assets/images/product-details/c-2.png') }}"
+                                        alt="" />
+                                </div>
+                                <div class="c-card mr-10">
+                                    <img src="{{ asset('frontend/assets/images/product-details/c-3.png') }}"
+                                        alt="" />
+                                </div>
+                                <div class="c-card">
+                                    <img src="{{ asset('frontend/assets/images/product-details/c-4.png') }}"
+                                        alt="" />
+                                </div>
+                            </div>
+
+                            <div class="d-flex">
+                                <h4 class="heading4">Share</h4>
+
+                                <div class="d-flex social-links">
+                                    <a href="https://facebook.com/">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                    </a>
+                                    <a href="https://twitter.com/">
+                                        <i class="fa-brands fa-twitter"></i>
+                                    </a>
+                                    <a href="https://instagram.com/">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </a>
+                                    <a href="https://linkedin.com/">
+                                        <i class="fa-brands fa-linkedin-in"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
+                        <a href="{{ url('cart') }}">
+                            <button class="button-1 mt-30">Add to cart</button>
+                        </a>
                     </div>
                 </div>
             </div>
+            <div class="square"></div>
+
+            <!-- Descriptions Start -->
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                        Description
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                        Reviews
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link heading4" id="pills-contact-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                        aria-selected="false">
+                        Comment
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+                    tabindex="0">
+                    <div class="paragraph mb-10">
+                        {{ $item->description }}
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                    tabindex="0">
+                    <form action="" class="review_wrapper">
+                        <div class="heading4 mb-20">Write a Review</div>
+                        <label for="">Name</label>
+                        <input type="text" name="" id="" placeholder="Enter your name " required />
+                        <label for=""> Email </label>
+                        <input type="text" name="" id="" placeholder="Enter your email " required />
+                        <label for="">Rating</label>
+                        <div class="ratings">
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                            <i class="fa-sharp fa-solid fa-star"></i>
+                        </div>
+                        <label for="">Review Title</label>
+                        <input type="text" name="" id="" placeholder="Give you review a title "
+                            required />
+
+                        <button type="submit" class="button-1">Submit</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
+                    tabindex="0">
+                    <div class="heading4 mb-20">Comments</div>
+                    <div class="comments d-flex justify-content-between align-items-center border">
+                        <div class="paragraph">0 Comments</div>
+
+                        <div class="sortby d-flex align-items-center">
+                            <div class="paragraph mr-10">Sort by</div>
+
+                            <select name="" id="">
+                                <option value="">Newest</option>
+                                <option value="old">Old</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Descriptions End -->
         </div>
-    </section>
 
-    {{-- items --}}
-    <section class="product-items-slider section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h5 class="heading-design-h5">Best Offers View <span class="badge badge-info">20% OFF</span>
-                    <a class="float-right text-secondary" href="#">View All</a>
-                </h5>
+        <!-- Section padding -->
+        <div class="square"></div>
+
+        <!-- Related Products Start -->
+        <div class="related-products">
+            <!-- Header -->
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <h2 class="heading2 mb-40">Related products</h2>
             </div>
-            <div class="owl-carousel owl-carousel-featured">
-                @foreach ($products as $product)
-                    <div class="item">
-                        <div class="product">
-                            <a href="{{ route('frontend.product.item', $product->id) }}">
-                                <div class="product-header">
-                                    <span
-                                        class="badge badge-success">{{ round((($product->main_price - $product->selling_price) / $product->main_price) * 100) }}%OFF</span>
-                                    <img class="img-fluid" src="{{ asset('storage/product/' . $product->image) }}"
-                                        alt="">
-                                    <span class="veg text-success mdi mdi-circle"></span>
-                                </div>
-                                <div class="product-body">
-                                    <h5>{{ Str::limit($product->name, 40, '...')  }} </h5>
-                                    {{--  <h6><strong><span class="mdi mdi-approval"></span> Available in</strong> - 500 gm</h6> --}}
+            <!-- Header -->
 
+            <div class="container">
+                <div class="related-slider owl-carousel owl-theme">
+                    @foreach ($products as $product)
+                        <div class="product-card">
+                            <div class="img-wrapper mb-20">
+                                <a href="#">
+                                    <img style="width: 320px; height:340px;"
+                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                        class="img-fluid" />
+                                </a>
+                                <a href="">
+                                    <img style="width: 320px; height:340px;"
+                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                        class="img-fluid hovered-img" />
+                                </a>
+
+                                <div class="overlay">
+                                    <div class="icon-wrapper">
+                                        <div class="tooltip-wrapper">
+                                            <div onclick="openPopup()" class="icon">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </div>
+                                            <div class="my-tooltip">Quick View</div>
+                                        </div>
+                                        <div class="tooltip-wrapper">
+                                            <div class="icon">
+                                                <i onclick="addToCart({{ $product->id }})"
+                                                    class="fa-solid fa-cart-shopping"></i>
+                                            </div>
+                                            <div class="my-tooltip">Add to Cart</div>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <a href="{{ url('product-details') }}">
+                                <h5 class="heading5">{{ $product->name }}</h5>
                             </a>
-                            <div class="product-footer">
-                                <div class="justify-content-between align-items-center">
-                                    <div>
-                                        <p class="offer-price font-weight-bold mb-0">৳{{ $product->selling_price }}</p>
-                                        <small class="text-muted">
-                                            <del>৳{{ $product->main_price }}</del>
-                                        </small>
-                                    </div>
-                                    <div class="d-flex">
-                                        <button onclick="addToCart({{ $product->id }})" type="button" 
-                                                class="btn btn-secondary btn-sm rounded-circle mx-1"
-                                                data-toggle="tooltip" title="Add to Cart">
-                                            <i class="fa-solid fa-cart-arrow-down"></i>
-                                        </button>
-                                        <button onclick="buyNow({{ $product->id }})" type="button" 
-                                                class="btn btn-primary btn-sm rounded-pill px-3"
-                                                data-toggle="tooltip" title="Buy Now">
-                                            <i class="fa-solid fa-bag-shopping"></i> Buy
-                                        </button>
-                                    </div>
-                                </div>
+                            <div class="paragraph text-center">
+                                {{ text_limit($product->description) }}
                             </div>
-
+                            <h3 class="heading3">{{ $product->selling_price }}{{ config('company.currency_symbol') }}
+                            </h3>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
-    </section>
+        <!-- Related Products End -->
+    </div>
+
 @endsection
-@push('scripts')
-<script>
-function imageZoom(img, result) {
-    let lens = document.createElement("DIV");
-    lens.className = "img-zoom-lens";
-    img.parentElement.appendChild(lens);
-
-    let cx = result.offsetWidth / lens.offsetWidth;
-    let cy = result.offsetHeight / lens.offsetHeight;
-
-    result.style.backgroundImage = "url('" + img.src + "')";
-    result.style.backgroundSize =
-        (img.width * cx) + "px " + (img.height * cy) + "px";
-
-    lens.addEventListener("mousemove", moveLens);
-    img.addEventListener("mousemove", moveLens);
-    lens.addEventListener("touchmove", moveLens);
-    img.addEventListener("touchmove", moveLens);
-
-    function moveLens(e) {
-        e.preventDefault();
-        let pos = getCursorPos(e);
-        let x = pos.x - lens.offsetWidth / 2;
-        let y = pos.y - lens.offsetHeight / 2;
-
-        if (x > img.width - lens.offsetWidth) x = img.width - lens.offsetWidth;
-        if (x < 0) x = 0;
-        if (y > img.height - lens.offsetHeight) y = img.height - lens.offsetHeight;
-        if (y < 0) y = 0;
-
-        lens.style.left = x + "px";
-        lens.style.top = y + "px";
-
-        result.style.backgroundPosition =
-            "-" + (x * cx) + "px -" + (y * cy) + "px";
-    }
-
-    function getCursorPos(e) {
-        let a = img.getBoundingClientRect();
-        let x = e.pageX - a.left;
-        let y = e.pageY - a.top;
-        return { x, y };
-    }
-}
-
-// Apply zoom to ALL images
-document.querySelectorAll('.zoom-image').forEach(img => {
-    img.addEventListener('mouseenter', function () {
-        let result = document.getElementById('zoom-result');
-        result.style.display = "inline-block";
-        result.innerHTML = ''; // reset
-        imageZoom(img, result);
-    });
-
-    // যখন mouse leave করবে তখন zoom-result লুকিয়ে যাবে
-    img.addEventListener('mouseleave', function () {
-        let result = document.getElementById('zoom-result');
-        result.style.display = "none";
-        result.innerHTML = ''; // cleanup
-        
-        // lens remove করুন
-        let lens = img.parentElement.querySelector('.img-zoom-lens');
-        if (lens) {
-            lens.remove();
-        }
-    });
-});
-</script>
-<script>
-$('.nav-pills a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    $('.nav-pills li').removeClass('active');
-    $(e.target).parent('li').addClass('active');
-});
-</script>
-@endpush

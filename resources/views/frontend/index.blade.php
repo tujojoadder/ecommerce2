@@ -148,15 +148,14 @@
                                 <div class="overlay">
                                     <div class="icon-wrapper">
                                         <div class="tooltip-wrapper">
-                                            <div onclick="openPopup()" class="icon">
+                                            <div onclick="quickView()" class="icon">
                                                 <i class="fa-regular fa-eye"></i>
                                             </div>
                                             <div class="my-tooltip">Quick View</div>
                                         </div>
                                         <div class="tooltip-wrapper">
-                                            <div onclick="openCart()" class="icon">
-                                                <i class="fa-solid fa-cart-shopping"
-                                                    onclick="addToCart({{ $product->id }})"></i>
+                                            <div class="icon" onclick="addToCart({{ $product->id }})">
+                                                <i class="fa-solid fa-cart-shopping"></i>
                                             </div>
                                             <div class="my-tooltip">Add to Cart
                                             </div>
@@ -175,7 +174,7 @@
                                 </div> --}}
 
                                 <p class="card-name">
-                                    <a href="/">{{ $product->name }}</a>
+                                    <a href="{{ route('frontend.product.item', $product->id) }}">{{ $product->name }}</a>
                                 </p>
                                 <p class="card-price">
                                     {{ $product->selling_price }}৳ -
@@ -202,15 +201,14 @@
                                 <div class="overlay">
                                     <div class="icon-wrapper">
                                         <div class="tooltip-wrapper">
-                                            <div onclick="openPopup()" class="icon">
+                                            <div onclick="quickView()" class="icon">
                                                 <i class="fa-regular fa-eye"></i>
                                             </div>
                                             <div class="my-tooltip">Quick View</div>
                                         </div>
                                         <div class="tooltip-wrapper">
-                                            <div onclick="openCart()" class="icon">
-                                                <i class="fa-solid fa-cart-shopping"
-                                                    onclick="addToCart({{ $product->id }})"></i>
+                                            <div class="icon" onclick="addToCart({{ $product->id }})">
+                                                <i class="fa-solid fa-cart-shopping"></i>
                                             </div>
                                             <div class="my-tooltip">Add to Cart</div>
                                         </div>
@@ -228,7 +226,7 @@
                                 </div> --}}
 
                                 <p class="card-name">
-                                    <a href="/">{{ $product->name }}</a>
+                                    <a href="{{ route('frontend.product.item', $product->id) }}">{{ $product->name }}</a>
                                 </p>
                                 <p class="card-price">
                                     {{ $product->selling_price }}৳ -
@@ -255,15 +253,14 @@
                                 <div class="overlay">
                                     <div class="icon-wrapper">
                                         <div class="tooltip-wrapper">
-                                            <div onclick="openPopup()" class="icon">
+                                            <div onclick="quickView()" class="icon">
                                                 <i class="fa-regular fa-eye"></i>
                                             </div>
                                             <div class="my-tooltip">Quick View</div>
                                         </div>
                                         <div class="tooltip-wrapper">
-                                            <div onclick="openCart()" class="icon">
-                                                <i class="fa-solid fa-cart-shopping"
-                                                    onclick="addToCart({{ $product->id }})"></i>
+                                            <div class="icon" onclick="addToCart({{ $product->id }})">
+                                                <i class="fa-solid fa-cart-shopping"></i>
                                             </div>
                                             <div class="my-tooltip">Add to Cart</div>
                                         </div>
@@ -281,11 +278,11 @@
                                 </div> --}}
 
                                 <p class="card-name">
-                                    <a href="/">{{ $product->name }}</a>
+                                    <a href="{{ route('frontend.product.item', $product->id) }}">{{ $product->name }}</a>
                                 </p>
                                 <p class="card-price">
                                     {{ $product->selling_price }}৳ -
-                                    <span class="text-decoration-line-through">{{ $product->main_price }}৳ /span>
+                                    <span class="text-decoration-line-through">{{ $product->main_price }}৳ </span>
                                 </p>
                             </div>
                         </div>
@@ -349,15 +346,14 @@
                             <div class="overlay">
                                 <div class="icon-wrapper">
                                     <div class="tooltip-wrapper">
-                                        <div onclick="openPopup()" class="icon">
+                                        <div onclick="quickView()" class="icon">
                                             <i class="fa-regular fa-eye"></i>
                                         </div>
                                         <div class="my-tooltip">Quick View</div>
                                     </div>
                                     <div class="tooltip-wrapper">
-                                        <div onclick="openCart()" class="icon">
-                                            <i class="fa-solid fa-cart-shopping"
-                                                onclick="addToCart({{ $product->id }})"></i>
+                                        <div class="icon" onclick="addToCart({{ $product->id }})">
+                                            <i class="fa-solid fa-cart-shopping"></i>
                                         </div>
                                         <div class="my-tooltip">Add to Cart</div>
                                     </div>
@@ -365,7 +361,7 @@
                             </div>
                         </div>
 
-                        <a href="#">
+                        <a href="{{ route('frontend.product.item', $product->id) }}">
                             <h5 class="heading5">{{ $product->name }}</h5>
                         </a>
                         <div class="paragraph text-center">
@@ -477,7 +473,8 @@
                             <i class="fa-sharp fa-solid fa-star"></i>
                         </div> --}}
                             <p class="card-name">
-                                <a href="#">{{ Str::limit($product->name, 40, '...') }}</a>
+                                <a
+                                    href="{{ route('frontend.product.item', $product->id) }}">{{ Str::limit($product->name, 40, '...') }}</a>
                             </p>
                             <p class="card-price">
                                 {{ $product->selling_price }}৳ - <span
@@ -489,10 +486,10 @@
                                         <i class="fa-regular fa-heart"></i>
                                     </div>
                                 </a>
-                                <div onclick="openCart()" class="card-button mr-15">
-                                    <i class="fi fi-rr-shopping-bag"></i>
+                                <div class="card-button mr-15">
+                                    <i class="fi fi-rr-shopping-bag" onclick="addToCart({{ $product->id }})"></i>
                                 </div>
-                                <div onclick="openPopup()" class="card-button">
+                                <div onclick="quickView({{ $product->id }})" class="card-button">
                                     <i class="fi fi-rr-eye"></i>
                                 </div>
                             </div>

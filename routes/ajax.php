@@ -27,6 +27,7 @@ Route::get('warehouses', [AjaxController::class, 'get_warehouses'])->name('get.w
 Route::get('product-groups', [AjaxController::class, 'get_product_groups'])->name('get.product.groups');
 Route::get('get-product-group/{id}', [AjaxController::class, 'get_product_group'])->name('get.product.group');
 Route::get('get-product/{id}', [AjaxController::class, 'get_product'])->name('get.product');
+Route::get('get-product2/{id}', [AjaxController::class, 'get_product2'])->name('get.product2');
 Route::get('purchased-products', [AjaxController::class, 'get_purchased_products'])->name('get.purchased.products');
 Route::get('get-purchased-product/{id}', [AjaxController::class, 'get_purchased_product'])->name('get.purchased.product');
 Route::get('products-units', [AjaxController::class, 'get_product_units'])->name('get.product.units');
@@ -79,4 +80,3 @@ Route::get('get-receive-category/{id}', [AjaxController::class, 'getReceiveCateg
 Route::get('get-account/{id}', [AjaxController::class, 'getAccount'])->name('get.account');
 
 Route::post('set-site-preset/{type}/{value}', [AjaxController::class, 'setSitePreset'])->name('set.site.preset');
-

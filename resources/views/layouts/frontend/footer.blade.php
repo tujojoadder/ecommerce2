@@ -94,6 +94,21 @@
 
 <!-- Footer section end -->
 
+<!-- Search Bar -->
+<div class="main-search-bar">
+    <form action="">
+        <input type="text" placeholder="SEARCH" />
+
+        <div onclick="closeSearchBar()" class="close">
+            <i class="fa-regular fa-circle-xmark"></i>
+        </div>
+
+        <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form>
+</div>
+<!-- Search Bar -->
 <!-- Product short details popup start -->
 <div id="popup-overlay">
     <div class="popup d-flex">
@@ -183,17 +198,19 @@
     <div class="top-1">
         <div class="top-items-number">
             <i class="fa-sharp fa-solid fa-bag-shopping"></i>
-            <p class="paragraph-2">3 Items</p>
+            <p class="paragraph-2">0 Items</p>
         </div>
         <div class="top-item-dollar">
-            <p class="paragraph-2">$15</p>
+            <p class="paragraph-2">0</p>
         </div>
     </div>
 </div>
 <!-- Right Sidebar-Bar Toggler -->
 
-<script src="{{ asset('frontend/assets/js/scrollUp.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/swiper-bundle.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/aos.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/scrollUp.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/owl.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 

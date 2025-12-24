@@ -172,34 +172,35 @@ class AjaxController extends Controller
         $query = request()->input('search_text');
         if ($query) {
             $data = SubCategory::where('name', 'like', '%' . $query . '%')
-            ->where('category_id', $category_id)
-            ->where('is_deleted', 0)
-            ->get()
-            ->take(20);
+                ->where('category_id', $category_id)
+                ->where('is_deleted', 0)
+                ->get()
+                ->take(20);
         } else {
             $data = SubCategory::where('is_deleted', 0)
-            ->where('category_id', $category_id)
-            ->get()
-            ->take(20);
+                ->where('category_id', $category_id)
+                ->get()
+                ->take(20);
         }
         return response()->json($data);
     }
 
-    public function get_sub_sub_category($category_id, $subcategory_id){
+    public function get_sub_sub_category($category_id, $subcategory_id)
+    {
         $query = request()->input('search_text');
         if ($query) {
             $data = SubSubCategory::where('name', 'like', '%' . $query . '%')
-            ->where('category_id', $category_id)
-            ->where('subcategory_id', $subcategory_id)
-            ->where('is_deleted', 0)
-            ->get()
-            ->take(20);
+                ->where('category_id', $category_id)
+                ->where('subcategory_id', $subcategory_id)
+                ->where('is_deleted', 0)
+                ->get()
+                ->take(20);
         } else {
             $data = SubSubCategory::where('is_deleted', 0)
-            ->where('category_id', $category_id)
-            ->where('subcategory_id', $subcategory_id)
-            ->get()
-            ->take(20);
+                ->where('category_id', $category_id)
+                ->where('subcategory_id', $subcategory_id)
+                ->get()
+                ->take(20);
         }
         return response()->json($data);
     }
@@ -352,6 +353,8 @@ class AjaxController extends Controller
         $data['asset_name'] = $data->asset_name;
         return response()->json($data);
     }
+
+    public function get_product2($id) {}
 
     public function get_purchased_products()
     {
@@ -703,7 +706,8 @@ class AjaxController extends Controller
         return response()->json($data);
     }
 
-    public function getSubSubCategoryInfo($id){
+    public function getSubSubCategoryInfo($id)
+    {
         $data = SubSubCategory::findOrFail($id) ?? null;
         return response()->json($data);
     }
@@ -761,6 +765,4 @@ class AjaxController extends Controller
         $preset->save();
         return response()->json($preset);
     }
-
-
 }

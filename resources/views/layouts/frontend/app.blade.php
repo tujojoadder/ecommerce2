@@ -7,37 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Favicon -->
+    <link rel="icon" href="{{ config('company.favicon') }}" />
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/home.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/common.css') }}" />
-    <link rel="icon" href="{{ config('company.favicon') }}" />
+
+    <!-- Font-Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Flat Icon CDN -->
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+
+    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
 
-    <!-- OWL Slider CSS -->
+    <!-- OWL Carousel CSS -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <!-- OWL Slider CSS -->
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
 
     <!-- Flip-clock CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/flip-clock.css') }}" />
-    <!-- Flip-clock CSS -->
 
+    <!-- jQuery CDN -->
+    <script src="./js/vendor/jquery-3.6.3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
-    <!-- flip-clock cdn -->
-    <script src="{{ asset('frontend/assets/js/flip-clock.js') }}"></script>
-    <!-- flip-clock cdn -->
-    {{-- sweet 2 --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Flip-clock JS -->
+    <script src="{{ asset('frontend/assets/js/flip-clock.js') }}"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <title>SolPlant</title>
     @stack('styles')
@@ -170,7 +186,7 @@
         });
 
         function addToCart(product_id) {
-
+            openCart();
             var qty = $("#qty1").val() || 1;
             var url = "{{ route('frontend.addCart.store') }}";
             $.ajax({
@@ -408,6 +424,23 @@
                             timer: 2000,
                         });
                     }
+                }
+            });
+        }
+    </script>
+    <script>
+        function quickView(id) {
+            var url = "{{ route('get.product', ':id') }}";
+            url = url.replace(':id', id);
+
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function(data) {
+
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
                 }
             });
         }
