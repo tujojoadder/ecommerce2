@@ -228,7 +228,7 @@
                                 </div> --}}
 
                                 <p class="card-name">
-                                    <a href="/">Curabitur a Purus</a>
+                                    <a href="/">{{ $product->name }}</a>
                                 </p>
                                 <p class="card-price">
                                     {{ $product->selling_price }}৳ -
@@ -281,7 +281,7 @@
                                 </div> --}}
 
                                 <p class="card-name">
-                                    <a href="/">Convallis Quam Sit</a>
+                                    <a href="/">{{ $product->name }}</a>
                                 </p>
                                 <p class="card-price">
                                     {{ $product->selling_price }}৳ -
