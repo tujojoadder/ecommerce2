@@ -121,398 +121,172 @@
                 <button class="card-type is-checked active" data-filter="*">
                     All
                 </button>
-                <button class="card-type" data-filter=".top-rated">Top Rated</button>
-                <button class="card-type" data-filter=".trending">Trending</button>
+                <button class="card-type" data-filter=".top-rated">Best Selling Product</button>
+                <button class="card-type" data-filter=".trending">Special Product</button>
                 <button class="card-type" data-filter=".best-seller">
-                    Best Seller
+                    New Arrival Product
                 </button>
             </div>
 
             <div class="item-details row">
-                <div class="col-sm-6 col-lg-4 col-xl-3 item top-rated">
-                    <div class="product-card">
-                        <div class="img-wrapper mb-20">
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/1.png') }}" alt=""
-                                    class="img-fluid" />
-                            </a>
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/3.png') }}" alt=""
-                                    class="img-fluid hovered-img" />
-                            </a>
-                            <div class="overlay">
-                                <div class="icon-wrapper">
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openPopup()" class="icon">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </div>
-                                        <div class="my-tooltip">Quick View</div>
-                                    </div>
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openCart()" class="icon">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </div>
-                                        <div class="my-tooltip">Add to Cart</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="best-card-text">
-                            <div class="best-card-star">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                            </div>
+                @foreach ($products->where('is_bestsell', 1) as $product)
+                    <div class="col-sm-6 col-lg-4 col-xl-3 item top-rated">
+                        <div class="product-card">
 
-                            <p class="card-name">
-                                <a href="/">Aliquam Furniture</a>
-                            </p>
-                            <p class="card-price">
-                                $99.00-
-                                <span class="text-decoration-line-through">$79.20</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3 item best-seller">
-                    <div class="product-card">
-                        <div class="img-wrapper mb-20">
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/2.png') }}" alt=""
-                                    class="img-fluid" />
-                            </a>
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/4.png') }}" alt=""
-                                    class="img-fluid hovered-img" />
-                            </a>
-                            <div class="overlay">
-                                <div class="icon-wrapper">
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openPopup()" class="icon">
-                                            <i class="fa-regular fa-eye"></i>
+                            <div class="img-wrapper mb-20">
+                                <a href="/">
+                                    <img style="width:320ppx; height:340px;"
+                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                        class="img-fluid" />
+                                </a>
+                                <a href="/">
+                                    <img style="width:320ppx; height:340px;"
+                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                        class="img-fluid hovered-img" />
+                                </a>
+                                <div class="overlay">
+                                    <div class="icon-wrapper">
+                                        <div class="tooltip-wrapper">
+                                            <div onclick="openPopup()" class="icon">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </div>
+                                            <div class="my-tooltip">Quick View</div>
                                         </div>
-                                        <div class="my-tooltip">Quick View</div>
-                                    </div>
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openCart()" class="icon">
-                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        <div class="tooltip-wrapper">
+                                            <div onclick="openCart()" class="icon">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </div>
+                                            <div class="my-tooltip">Add to Cart</div>
                                         </div>
-                                        <div class="my-tooltip">Add to Cart</div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="best-card-text">
-                            <div class="best-card-star">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
+                            <div class="best-card-text">
+                                <div class="best-card-star">
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                </div>
+
+                                <p class="card-name">
+                                    <a href="/">{{ $product->name }}</a>
+                                </p>
+                                <p class="card-price">
+                                    $99.00-
+                                    <span class="text-decoration-line-through">$79.20</span>
+                                </p>
                             </div>
-
-                            <p class="card-name">
-                                <a href="/">Curabitur a Purus</a>
-                            </p>
-                            <p class="card-price">
-                                $99.00-
-                                <span class="text-decoration-line-through">$79.20</span>
-                            </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3 item trending">
-                    <div class="product-card">
-                        <div class="img-wrapper mb-20">
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/3.png') }}" alt=""
-                                    class="img-fluid" />
-                            </a>
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/5.png') }}" alt=""
-                                    class="img-fluid hovered-img" />
-                            </a>
-                            <div class="overlay">
-                                <div class="icon-wrapper">
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openPopup()" class="icon">
-                                            <i class="fa-regular fa-eye"></i>
+                @endforeach
+                @foreach ($products->where('is_special', 1) as $product)
+                    <div class="col-sm-6 col-lg-4 col-xl-3 item best-seller">
+                        <div class="product-card">
+                            <div class="img-wrapper mb-20">
+                                <a href="/">
+                                    <img style="width:320ppx; height:340px;"
+                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                        class="img-fluid" />
+                                </a>
+                                <a href="/">
+                                    <img style="width:320ppx; height:340px;"
+                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                        class="img-fluid hovered-img" />
+                                </a>
+                                <div class="overlay">
+                                    <div class="icon-wrapper">
+                                        <div class="tooltip-wrapper">
+                                            <div onclick="openPopup()" class="icon">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </div>
+                                            <div class="my-tooltip">Quick View</div>
                                         </div>
-                                        <div class="my-tooltip">Quick View</div>
-                                    </div>
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openCart()" class="icon">
-                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        <div class="tooltip-wrapper">
+                                            <div onclick="openCart()" class="icon">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </div>
+                                            <div class="my-tooltip">Add to Cart</div>
                                         </div>
-                                        <div class="my-tooltip">Add to Cart</div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="best-card-text">
-                            <div class="best-card-star">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
+                            <div class="best-card-text">
+                                <div class="best-card-star">
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                </div>
+
+                                <p class="card-name">
+                                    <a href="/">Curabitur a Purus</a>
+                                </p>
+                                <p class="card-price">
+                                    $99.00-
+                                    <span class="text-decoration-line-through">$79.20</span>
+                                </p>
                             </div>
-
-                            <p class="card-name">
-                                <a href="/">Convallis Quam Sit</a>
-                            </p>
-                            <p class="card-price">
-                                $99.00-
-                                <span class="text-decoration-line-through">$79.20</span>
-                            </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3 item best-seller">
-                    <div class="product-card">
-                        <div class="img-wrapper mb-20">
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/4.png') }}" alt=""
-                                    class="img-fluid" />
-                            </a>
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/6.png') }}" alt=""
-                                    class="img-fluid hovered-img" />
-                            </a>
-                            <div class="overlay">
-                                <div class="icon-wrapper">
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openPopup()" class="icon">
-                                            <i class="fa-regular fa-eye"></i>
+                @endforeach
+                @foreach ($products->where('is_newarrival', 1) as $product)
+                    <div class="col-sm-6 col-lg-4 col-xl-3 item trending">
+                        <div class="product-card">
+                            <div class="img-wrapper mb-20">
+                                <a href="/">
+                                    <img style="width:320ppx; height:340px;"
+                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                        class="img-fluid" />
+                                </a>
+                                <a href="/">
+                                    <img style="width:320ppx; height:340px;"
+                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                        class="img-fluid hovered-img" />
+                                </a>
+                                <div class="overlay">
+                                    <div class="icon-wrapper">
+                                        <div class="tooltip-wrapper">
+                                            <div onclick="openPopup()" class="icon">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </div>
+                                            <div class="my-tooltip">Quick View</div>
                                         </div>
-                                        <div class="my-tooltip">Quick View</div>
-                                    </div>
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openCart()" class="icon">
-                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        <div class="tooltip-wrapper">
+                                            <div onclick="openCart()" class="icon">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </div>
+                                            <div class="my-tooltip">Add to Cart</div>
                                         </div>
-                                        <div class="my-tooltip">Add to Cart</div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="best-card-text">
-                            <div class="best-card-star">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-
-                            <p class="card-name">
-                                <a href="/">Aliquam vel</a>
-                            </p>
-                            <p class="card-price">
-                                $99.00-
-                                <span class="text-decoration-line-through">$79.20</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3 item top-rated">
-                    <div class="product-card">
-                        <div class="img-wrapper mb-20">
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/5.png') }}" alt=""
-                                    class="img-fluid" />
-                            </a>
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/7.png') }}" alt=""
-                                    class="img-fluid hovered-img" />
-                            </a>
-                            <div class="overlay">
-                                <div class="icon-wrapper">
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openPopup()" class="icon">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </div>
-                                        <div class="my-tooltip">Quick View</div>
-                                    </div>
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openCart()" class="icon">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </div>
-                                        <div class="my-tooltip">Add to Cart</div>
-                                    </div>
+                            <div class="best-card-text">
+                                <div class="best-card-star">
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                    <i class="fa-sharp fa-solid fa-star"></i>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="best-card-text">
-                            <div class="best-card-star">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
+                                <p class="card-name">
+                                    <a href="/">Convallis Quam Sit</a>
+                                </p>
+                                <p class="card-price">
+                                    $99.00-
+                                    <span class="text-decoration-line-through">$79.20</span>
+                                </p>
                             </div>
-
-                            <p class="card-name">
-                                <a href="/">Curabitur a Purus</a>
-                            </p>
-                            <p class="card-price">
-                                $99.00-
-                                <span class="text-decoration-line-through">$79.20</span>
-                            </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3 item trending">
-                    <div class="product-card">
-                        <div class="img-wrapper mb-20">
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/6.png') }}" alt=""
-                                    class="img-fluid" />
-                            </a>
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/8.png') }}" alt=""
-                                    class="img-fluid hovered-img" />
-                            </a>
-                            <div class="overlay">
-                                <div class="icon-wrapper">
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openPopup()" class="icon">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </div>
-                                        <div class="my-tooltip">Quick View</div>
-                                    </div>
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openCart()" class="icon">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </div>
-                                        <div class="my-tooltip">Add to Cart</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="best-card-text">
-                            <div class="best-card-star">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-
-                            <p class="card-name">
-                                <a href="/">Dignissim Furniture</a>
-                            </p>
-                            <p class="card-price">
-                                $99.00-
-                                <span class="text-decoration-line-through">$79.20</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3 item top-rated">
-                    <div class="product-card">
-                        <div class="img-wrapper mb-20">
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/7.png') }}" alt=""
-                                    class="img-fluid" />
-                            </a>
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/1.png') }}" alt=""
-                                    class="img-fluid hovered-img" />
-                            </a>
-                            <div class="overlay">
-                                <div class="icon-wrapper">
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openPopup()" class="icon">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </div>
-                                        <div class="my-tooltip">Quick View</div>
-                                    </div>
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openCart()" class="icon">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </div>
-                                        <div class="my-tooltip">Add to Cart</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="best-card-text">
-                            <div class="best-card-star">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-
-                            <p class="card-name">
-                                <a href="/">Curabitur a Purus</a>
-                            </p>
-                            <p class="card-price">
-                                $99.00-
-                                <span class="text-decoration-line-through">$79.20</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3 item best-seller">
-                    <div class="product-card">
-                        <div class="img-wrapper mb-20">
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/8.png') }}" alt=""
-                                    class="img-fluid" />
-                            </a>
-                            <a href="/">
-                                <img src="{{ asset('frontend/assets/images/products/2.png') }}" alt=""
-                                    class="img-fluid hovered-img" />
-                            </a>
-                            <div class="overlay">
-                                <div class="icon-wrapper">
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openPopup()" class="icon">
-                                            <i class="fa-regular fa-eye"></i>
-                                        </div>
-                                        <div class="my-tooltip">Quick View</div>
-                                    </div>
-                                    <div class="tooltip-wrapper">
-                                        <div onclick="openCart()" class="icon">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </div>
-                                        <div class="my-tooltip">Add to Cart</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="best-card-text">
-                            <div class="best-card-star">
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                                <i class="fa-sharp fa-solid fa-star"></i>
-                            </div>
-
-                            <p class="card-name">
-                                <a href="/">Aliquam Furniture</a>
-                            </p>
-                            <p class="card-price">
-                                $99.00-
-                                <span class="text-decoration-line-through">$79.20</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <!-- --------------------------------------------- -->
