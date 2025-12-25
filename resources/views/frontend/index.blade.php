@@ -144,7 +144,7 @@
                                 <div class="overlay">
                                     <div class="icon-wrapper">
                                         <div class="tooltip-wrapper">
-                                            <div onclick="quickView()" class="icon">
+                                            <div onclick="quickView({{ $product->id }})" class="icon">
                                                 <i class="fa-regular fa-eye"></i>
                                             </div>
                                             <div class="my-tooltip">Quick View</div>
@@ -480,7 +480,7 @@
                                 <div class="card-button mr-15">
                                     <i class="fi fi-rr-shopping-bag" onclick="addToCart({{ $product->id }})"></i>
                                 </div>
-                                <div onclick="quickView({{ $product->id }})" class="card-button">
+                                <div onclick="quickView(45)" class="card-button">
                                     <i class="fi fi-rr-eye"></i>
                                 </div>
                             </div>

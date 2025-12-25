@@ -113,24 +113,22 @@
 <div id="popup-overlay">
     <div class="popup d-flex">
         <div class="img-wrapper">
-            <img src="{{ asset('frontend/assets/images/popup/1.png') }}" alt="" class="img-fluid" />
+            <img src="{{ asset('frontend/assets/images/popup/1.png') }}" style="width:430px;height:541px;"
+                alt="" class="img-fluid" />
         </div>
         <div onclick="closePopup()" class="close">
             <i class="fa-sharp fa-regular fa-circle-xmark"></i>
         </div>
         <div class="content">
-            <h3 class="heading3">Aliquam vel</h3>
+            <h3 class="heading3"></h3>
             <div class="price d-flex mb-20">
-                <span class="line-through">$12</span>
+                <span class="line-through"></span>
 
-                <span>$10</span>
+                <span></span>
             </div>
 
             <div class="paragraph">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed
-                nulla eu dui suscipit ultricies. Mauris vestibulum volutpat nisl vel
-                cursus. Cras finibus nec mauris tincidunt condimentum. Cras vel
-                interdum arcu.
+
             </div>
 
             <div class="rating d-flex">
@@ -141,7 +139,7 @@
                 <span><i class="fa-solid fa-star"></i></span>
             </div>
 
-            <h4 class="heading4 mb-30">Category : Small Plant</h4>
+            <h4 class="heading4 mb-30">Category :</h4>
 
             <div class="d-flex quantity-wrapper align-items-center">
                 <h4 class="heading">Quantity</h4>

@@ -35,6 +35,7 @@ use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Branch;
 use App\Models\Brand;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\PresetSetting;
 use App\Models\SubCategory;
@@ -354,7 +355,17 @@ class AjaxController extends Controller
         return response()->json($data);
     }
 
-    public function get_product2($id) {}
+    public function get_product2($id)
+    {
+        $cookie_id = request()->cookie('cookie_id');
+        $item = Product::with('images', 'category')->findOrFail($id);
+        $cartData = Cart::with('product')->where('product_id', $id)->where('cookie_id', $cookie_id)->first();
+
+        return response()->json([
+            'product' => $item,
+            'cart'    => $cartData,
+        ]);
+    }
 
     public function get_purchased_products()
     {

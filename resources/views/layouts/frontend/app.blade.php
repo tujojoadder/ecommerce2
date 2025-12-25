@@ -463,13 +463,43 @@
     </script>
     <script>
         function quickView(id) {
-            var url = "{{ route('get.product', ':id') }}";
+            var currency = "{{ config('company.currency_symbol') }}";
+            var base_url = "{{ asset('storage/product') }}/";
+
+            $("#popup-overlay").addClass("active");
+            var url = "{{ route('get.product2', ':id') }}";
+
             url = url.replace(':id', id);
 
             $.ajax({
                 type: "GET",
                 url: url,
                 success: function(data) {
+                    var product = data.product;
+                    var cart = data.cartData;
+                    console.log('quantity' + cart);
+                    var name = product?.name || '';
+                    var main_price = product?.main_price || 0;
+                    var selling = product?.selling_price || 0;
+                    var description = product?.description || '';
+                    var category = product?.category?.name || 'N/A';
+                    var quantity = cart?.quantity || 1;
+
+                    var image = product?.image;
+
+                    // Populate the popup
+                    var $popup = $("#popup-overlay");
+
+                    $popup.find(".content .heading3").text(name);
+                    $popup.find(".content .price .line-through").text(`${main_price}`);
+                    $popup.find(".content .price span:not(.line-through)").text(`${selling}`);
+                    $popup.find(".content .paragraph").text(description);
+                    $popup.find(".content .heading4").text(`Category: ${category}`);
+                    $popup.find(".quantity-wrapper .quantity input").val(quantity);
+                    $popup.find(".img-wrapper img").attr("src", base_url + image);
+
+                    // Show popup
+                    $popup.addClass("active");
 
                 },
                 error: function(xhr) {
