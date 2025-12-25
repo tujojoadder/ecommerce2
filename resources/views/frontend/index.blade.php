@@ -365,7 +365,7 @@
                             <h5 class="heading5">{{ $product->name }}</h5>
                         </a>
                         <div class="paragraph text-center">
-                            {{ $product->description }}
+                            {{ text_limit($product->description) }}
                         </div>
                         <h3 class="heading3"> {{ $product->selling_price }}৳</h3>
                     </div>

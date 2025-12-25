@@ -79,7 +79,7 @@
                         <div class="pro-details">
                             <div class="d-flex">
                                 <h4 class="heading4 mb-30">Category</h4>
-                                <h4 class="heading4 mb-30">{{ $item->category->name }}</h4>
+                                <h4 class="heading4 mb-30">{{ $item?->category?->name }}</h4>
                             </div>
 
                             <div class="d-flex quantity-wrapper mb-30 align-items-center">
@@ -263,7 +263,7 @@
                                 </div>
                             </div>
 
-                            <a href="{{ url('product-details') }}">
+                            <a href="{{ route('frontend.product.item', $product->id) }}">
                                 <h5 class="heading5">{{ $product->name }}</h5>
                             </a>
                             <div class="paragraph text-center">
