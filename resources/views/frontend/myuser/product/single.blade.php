@@ -137,9 +137,14 @@
                             </div>
                         </div>
 
-                        <a href="{{ route('frontend.checkout.index') }}">
-                            <button class="button-1 mt-30">Add to cart</button>
-                        </a>
+                        <div class="d-flex gap-3">
+                            <button onclick="addToCartCheckout({{ $item->id }})" class="button-1 mt-30">Add to
+                                cart</button>
+
+                            <button onclick="buyOnCheckOut({{ $item->id }})" class="button-3 mt-30"> <i
+                                    class="fa-solid fa-cart-shopping "></i> Buy now</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -283,96 +288,84 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            // Quantity increase button
-            $(document).on('click', '.quantity-up', function() {
-                var product_id = $(this).data('id');
-                var input = $('.cart-qty');
+        function addToCartCheckout(product_id) {
 
-                var qty = parseInt(input.val());
-
-                if (qty < 100) {
-                    /*  qty++; */
-                    input.val(qty);
-
-                    // Update cart via AJAX
-                    addToCartCheckout(product_id);
+            var input = $('.cart-qty');
+            var qty = parseInt(input.val());
+            if (qty > 100) {
+                qty = 100;
+            }
+            var url = "{{ route('frontend.addCart.store.checkout') }}";
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: {
+                    product_id: product_id,
+                    qty: qty,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url,
+                success: function(data) {
+                    if (data[0] == 'success') {
+                        openCart();
+                        addCartData();
+                    } else if (data[0] == 'increase') {
+                        openCart();
+                        addCartData();
+                    } else {
+                        Swal.fire({
+                            title: 'Sorry',
+                            text: "Something Wrong.",
+                            icon: 'warning',
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                        });
+                    }
                 }
             });
+        }
 
-            function addToCartCheckout(product_id) {
-                var input = $('.cart-qty');
-                var qty = parseInt(input.val());
+        function buyOnCheckOut(product_id) {
 
-                var url = "{{ route('frontend.addCart.store.checkout') }}";
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    data: {
-                        product_id: product_id,
-                        qty: qty,
-                        _token: $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: url,
-                    success: function(data) {
-                        if (data[0] == 'success') {
-
-                            addCartData();
-                        } else if (data[0] == 'increase') {
-
-                            addCartData();
-                        } else {
-                            Swal.fire({
-                                title: 'Sorry',
-                                text: "Something Wrong.",
-                                icon: 'warning',
-                                toast: true,
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 3000,
-                                timerProgressBar: true,
-                            });
-                        }
-                    }
-                });
+            var input = $('.cart-qty');
+            var qty = parseInt(input.val());
+            if (qty > 100) {
+                qty = 100;
             }
-
-
-
-            // Quantity decrease button
-            $(document).on('click', '.quantity-down', function() {
-
-                var product_id = $(this).data('id');
-                var input = $('.cart-qty');
-                var qty = parseInt(input.val());
-
-                if (qty >= 1) {
-                    /*    qty--; */
-                    input.val(qty);
-
-                    // Update cart via AJAX
-                    updateCartQuantity(product_id, qty);
+            var url = "{{ route('frontend.addCart.store.checkout') }}";
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: {
+                    product_id: product_id,
+                    qty: qty,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url,
+                success: function(data) {
+                    if (data[0] == 'success') {
+                        addCartData();
+                        window.location.href = "{{ route('frontend.checkout.index') }}";
+                    } else if (data[0] == 'increase') {
+                        addCartData();
+                        window.location.href = "{{ route('frontend.checkout.index') }}";
+                    } else {
+                        Swal.fire({
+                            title: 'Sorry',
+                            text: "Something Wrong.",
+                            icon: 'warning',
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                        });
+                    }
                 }
             });
-
-            // Function to update cart quantity
-            function updateCartQuantity(product_id, qty) {
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('frontend.addCart.update') }}",
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                        product_id: product_id,
-                        quantity: qty
-                    },
-                    success: function(res) {
-                        if (res == 'success') {
-                            addCartData(); // Refresh cart
-                        }
-                    }
-                });
-            }
-
-        });
+        }
     </script>
 @endpush

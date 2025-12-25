@@ -258,6 +258,7 @@
                 url: url,
                 success: function(data) {
                     addCheckoutCartData();
+                    addCartData();
                 }
             });
         }

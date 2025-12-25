@@ -11,9 +11,9 @@ class ProductController extends Controller
 {
     public function show($id)
     {
+        $cookie_id = request()->cookie('cookie_id');
         $item = Product::with('images')->findOrFail($id);
-        $cartData = Cart::with('product')->where('product_id', $id)->first();
-
+        $cartData = Cart::with('product')->where('product_id', $id)->where('cookie_id', $cookie_id)->first();
         $pageTitle = $item->name;
 
         $products = Product::all();
