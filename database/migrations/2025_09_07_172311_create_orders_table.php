@@ -29,6 +29,10 @@ return new class extends Migration
             $table->integer('payment_type')->default(1); // 1 = cash on delivery, 2 = others payment
             $table->integer('payment_status')->default(0); // 0 = unpaid, 2 = paid
             $table->integer('order_status')->default(0);
+            $table->string('zip')->nullable();
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+
             $table->timestamps();
         });
     }

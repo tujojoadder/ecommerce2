@@ -25,12 +25,16 @@ class CheckoutController extends Controller
             'last_name'    => 'required|string|min:1|max:30',
             'phone'        => 'required|string|min:1|max:20',
             'email'        => 'nullable|email|max:50',
-            'division_id'  => 'required|integer',
-            'district_id'  => 'required|integer',
-            'upazila_id'   => 'required|integer',
-            'postal_code'  => 'required|string|max:20',
+            'division_id'  => 'nullable|integer',
+            'district_id'  => 'nullable|integer',
+            'upazila_id'   => 'nullable|integer',
+            'postal_code'  => 'nullable|string|max:20',
             'address'      => 'required|string|max:255',
+            'zip'      => 'required|string|max:255',
+            'country'      => 'required|string|max:255',
+            'city'      => 'required|string|max:255',
         ]);
+
 
         DB::beginTransaction(); // Start transaction
 
@@ -69,9 +73,13 @@ class CheckoutController extends Controller
                 'total_discount'        => $request->total_discount,
                 'total_shipping_charge' => $request->total_shipping_charge,
                 'grand_total'           => $request->grand_total,
+                'zip'                   => $request->zip,
+                'country'               => $request->country,
+                'city'                  => $request->city,
                 'payment_type'          => 1,
                 'payment_status'        => 0,
                 'order_status'          => 0,
+
             ]);
 
             // Create Order Items
@@ -98,7 +106,8 @@ class CheckoutController extends Controller
         }
     }
 
-    public function success($order_id){
+    public function success($order_id)
+    {
         $pageTitle = 'Order Placed Succesfully';
         $order = Order::with('orderItems', 'client')->findOrFail($order_id);
         $division = DB::table('divisions')->where('id', $order->division_id)->first();

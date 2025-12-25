@@ -109,6 +109,22 @@
     </form>
 </div>
 <!-- Search Bar -->
+<!-- Payment success modal -->
+<div class="payment-success">
+    <div onclick="closePaymentSuccess()" class="payment-overlay"></div>
+
+    <div class="success-card">
+        <div class="check">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <h3 class="heading">Your Payment Is Confirmed</h3>
+        {{--  <div class="paragraph">on 30 Dec 2022 5:00PM to 5:30PM</div>
+
+        <h5 class="heading5">Track Your Oder</h5> --}}
+    </div>
+</div>
+<!-- Payment success modal -->
 <!-- Product short details popup start -->
 <div id="popup-overlay">
     <div class="popup d-flex">

@@ -2,73 +2,79 @@
 @section('title', 'checkout - Groci')
 
 @section('content')
-    <div class="profile-cart">
-        <!-- Header Short Banner Start -->
-        <div class="profile-banner primary7">
-            <h2 class="heading2 text-center">Cart Page</h2>
-        </div>
-        <!-- Header Short Banner End -->
 
-        <!-- Cart Section Start -->
-        <div class="container">
-            <!-- Section padding -->
-            <div class="square"></div>
-            <h4 class="heading3 mb-40">Selected Item : 0</h4>
+    <form action="{{ route('frontend.checkout.store') }}" method="post">
+        @csrf
+        <div class="profile-cart">
+            <!-- Header Short Banner Start -->
+            <div class="profile-banner primary7">
+                <h2 class="heading2 text-center">Cart Page</h2>
+            </div>
+            <!-- Header Short Banner End -->
 
-            <div class="mb-20 row cart-page">
-                <div class="col-md-8">
-                    <div class="cart_table">
+            <!-- Cart Section Start -->
+            <div class="container">
+                <!-- Section padding -->
+                <div class="square"></div>
+                <h4 class="heading3 mb-40">Selected Item : 0</h4>
 
-                    </div>
+                <div class="mb-20 row cart-page">
+                    <div class="col-md-8">
+                        <div class="cart_table">
 
-                    <div class="more">
-                        Do you want to add more?
-                        <a href="/">Click Here</a>
-                    </div>
-                </div>
-                <div class="cart-info col-md-4">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h4 class="heading4 primary">Total</h4>
-                        <h4 class="heading5 mr-10">
-                        </h4>
-                    </div>
-                    <div class="d-flex mb-10 align-items-center justify-content-between">
-                        <h4 class="heading4 primary">Delivery Charge</h4>
-                        <h4 class="heading5 mr-10"></h4>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <div class="d-flex mt-20 align-items-center justify-content-between">
-                        <h4 class="heading4 primary">Payable Amount</h4>
-                        <h4 class="heading5 mr-10"></h4>
-                    </div>
-
-                    <div class="mt-50 preferred">Preferred Delivery Timings</div>
-
-                    <!-- Delivery Time -->
-                    <div class="delivery-time mt-30">
-                        <div class="heading6 mb-20">
-                            When would you like your delivery?
                         </div>
-
-                        <div class="d-flex gap-3 flex-wrap mt20 justify-content-between">
-                            <div class="left d-flex justify-content-center align-items-center">
-                                <div class="date">
-                                    <input type="date" data-date="" data-date-format="DD MMMM YYYY"
-                                        value="2023-02-25" />
-                                </div>
-                            </div>
-                            <div class="right d-flex justify-content-center align-items-center">
-                                <div class="date">
-                                    <input type="text" name="daterange" />
-                                </div>
-                            </div>
+                        <input type="hidden" name="sub_total" class="cartTotal_input" value="0">
+                        <input type="hidden" name="total_discount" class="" value="0">
+                        <input type="hidden" name="total_shipping_charge" class="cartShipping_input" value="0">
+                        <input type="hidden" name="grand_total" class="cartGrandTotal_input" value="0">
+                        <div class="more">
+                            Do you want to add more?
+                            <a href="/">Click Here</a>
                         </div>
                     </div>
-                    <!-- Delivery Time -->
+                    <div class="cart-info col-md-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h4 class="heading4 primary">Total</h4>
+                            <h4 class="heading5 mr-10">
+                            </h4>
+                        </div>
+                        <div class="d-flex mb-10 align-items-center justify-content-between">
+                            <h4 class="heading4 primary">Delivery Charge</h4>
+                            <h4 class="heading5 mr-10"></h4>
+                        </div>
 
-                    <div class="confirmation pt-40">
+                        <div class="divider"></div>
+
+                        <div class="d-flex mt-20 align-items-center justify-content-between">
+                            <h4 class="heading4 primary">Payable Amount</h4>
+                            <h4 class="heading5 mr-10"></h4>
+                        </div>
+
+                        <div class="mt-50 preferred">Preferred Delivery Timings</div>
+
+                        <!-- Delivery Time -->
+                        <div class="delivery-time mt-30">
+                            <div class="heading6 mb-20">
+                                When would you like your delivery?
+                            </div>
+
+                            <div class="d-flex gap-3 flex-wrap mt20 justify-content-between">
+                                <div class="left d-flex justify-content-center align-items-center">
+                                    <div class="date">
+                                        <input type="date" data-date="" data-date-format="DD MMMM YYYY"
+                                            value="2023-02-25" />
+                                    </div>
+                                </div>
+                                <div class="right d-flex justify-content-center align-items-center">
+                                    <div class="date">
+                                        <input type="text" name="daterange" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Delivery Time -->
+
+                        {{-- <div class="confirmation pt-40">
                         <h5 class="heading6 text-center">
                             Are you sure you want to order?
                         </h5>
@@ -81,16 +87,71 @@
                             By clicking/tapping Place Order, I agree to SolPlant
                             <a href="#">Terms of Service</a>
                         </div>
+                    </div> --}}
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Cart Section End -->
+            <!-- Cart Section End -->
 
+
+        </div>
+        <section id="payment-form">
+            <div class="payment-form container">
+                <div class="payment-forms">
+                    <div class="billing-details">
+                        <p class="heading4">Billing Details</p>
+                        <div class="billing-form">
+                            <div class="first-name">
+                                <label for="billing-first-name" class="paragraph mt-10">First Name*</label>
+                                <input required type="text" name="first_name" id="billing-first-name" />
+                            </div>
+                            <div class="second-name">
+                                <label for="billing-first-name" class="paragraph mt-10">Second Name*</label>
+                                <input required type="text" name="last_name" id="billing-first-name" />
+                            </div>
+                            <div class="email">
+                                <label for="billing-first-name" class="paragraph mt-10">Email*</label>
+                                <input required type="email" name="email" id="billing-first-name" />
+                            </div>
+                            <div class="phone-number">
+                                <label for="billing-first-name" class="paragraph mt-10">Phone Number*</label>
+                                <input required type="text" name="phone" id="billing-first-name" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shipping-details">
+                        <p class="heading4">Shipping Details</p>
+                        <div class="shipping-form">
+                            <div class="address">
+                                <label for="shipping-address" class="paragraph mt-10">Address*</label>
+                                <input name="address" required type="text" id="shipping-address" />
+                            </div>
+                            <div class="zip">
+                                <label for="shipping-zip" class="paragraph mt-10">Zip/Costal</label>
+                                <input required name="zip" type="text" id="shipping-zip" />
+                            </div>
+                            <div class="country">
+                                <label for="shipping-country" class="paragraph mt-10">Country*</label>
+                                <input required name="country" type="text" id="shipping-country" />
+                            </div>
+                            <div class="city">
+                                <label for="shipping-city" class="paragraph mt-10">City*</label>
+                                <input required name="city" type="text" id="shipping-city" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-button">
+                    <button class="button-1">
+                        Confirm & Pay
+                    </button>
+                </div>
+            </div>
+        </section>
         <!-- Section padding -->
         <div class="square"></div>
-    </div>
-
+    </form>
 @endsection
 
 
@@ -134,6 +195,13 @@
                             html +=
                                 '<div class="d-flex justify-content-between align-items-center cart-row">';
 
+                            html += '<input type="hidden" name="shipping_charge" value="' +
+                                shipping_charge + '">';
+                            html += '<input type="hidden" name="product_id[]" value="' + value
+                                .product_id + '">';
+                            html += '<input type="hidden" name="qty[]" value="' + value.quantity + '">';
+                            html += '<input type="hidden" name="price[]" value="' + value.price + '">';
+
                             // Item 1: Product Image and Info
                             html += '<div class="item1">';
                             html += '<div class="d-flex">';
@@ -156,7 +224,8 @@
                             html += '<div class="d-flex quantity">';
                             html += '<span class="quantity-down" data-id="' + value.product.id +
                                 '"><i class="fa-solid fa-minus"></i></span>';
-                            html += '<input type="number" class="cart-qty" data-id="' + value.product
+                            html += '<input type="number" class="cart-qty" data-id="' +
+                                value.product
                                 .id + '" min="1" max="100" step="1" value="' + value.quantity +
                                 '" readonly />';
                             html += '<span class="quantity-up" data-id="' + value.product.id +
@@ -192,6 +261,14 @@
                             ' {{ config('company.currency_symbol') }}');
                         $('.cart-info .heading5').eq(2).text((total + total_shipping) +
                             ' {{ config('company.currency_symbol') }}');
+
+                        $('.cartTotal_input').val(total);
+                        $('.cartShipping_input').val(total_shipping);
+                        $('.cartGrandTotal_input').val((total + total_shipping));
+
+
+
+
                     } else {
                         $('.cart_table').html('<div class="text-center p-4"><p>Your cart is empty</p></div>');
                         $('.total-price').text('0');
