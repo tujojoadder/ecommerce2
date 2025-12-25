@@ -23,18 +23,36 @@ class CartController extends Controller
         }
 
         if (Cart::where(['cookie_id' => $cookie_id, 'product_id' => $request->product_id])->exists()) {
-            if (Cart::where(['cookie_id' => $cookie_id, 'product_id' => $request->product_id])->exists()) {
-                Cart::where(['cookie_id' => $cookie_id, 'product_id' => $request->product_id])->increment('quantity', $request->qty);
-                return response()->json(['increase', $product->title]);
-            } else {
-                $cart = new Cart;
-                $cart->cookie_id = $cookie_id;
-                $cart->product_id = $request->product_id;
-                $cart->quantity = $request->qty;
-                $cart->price = $product->selling_price;
-                $cart->save();
-                return response()->json(['success', $product->name]);
-            }
+            Cart::where(['cookie_id' => $cookie_id, 'product_id' => $request->product_id])->increment('quantity', $request->qty);
+            return response()->json(['increase', $product->title]);
+        } else {
+            $cart = new Cart;
+            $cart->cookie_id = $cookie_id;
+            $cart->product_id = $request->product_id;
+            $cart->quantity = $request->qty;
+            $cart->price = $product->selling_price;
+            $cart->save();
+            return response()->json(['success', $product->name]);
+        }
+
+        return response()->json('error');
+    }
+    public function storeCheckOut(Request $request)
+    {
+        $product = Product::findOrFail($request->product_id);
+
+        if ($request->hasCookie('cookie_id')) {
+            $cookie_id = $request->cookie('cookie_id');
+        } else {
+            $cookie_id = time() . Str::random(10);
+            Cookie::queue('cookie_id', $cookie_id, 1440);
+        }
+
+        if (Cart::where(['cookie_id' => $cookie_id, 'product_id' => $request->product_id])->exists()) {
+            Cart::where(['cookie_id' => $cookie_id, 'product_id' => $request->product_id])->update([
+                'quantity' => $request->qty
+            ]);
+            return response()->json(['increase', $product->title]);
         } else {
             $cart = new Cart;
             $cart->cookie_id = $cookie_id;

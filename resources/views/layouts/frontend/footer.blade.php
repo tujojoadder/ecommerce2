@@ -186,7 +186,7 @@
                 <p>Subtotal: <span class="cartTotalAmount">$0.00</span></p>
             </div>
             <div class="btn-box">
-                <a href="/checkout" class="button-1">Checkout</a>
+                <a href="{{ route('frontend.checkout.index') }}" class="button-1">Checkout</a>
             </div>
         </div>
     </div>
@@ -263,5 +263,37 @@
         });
         $(".filters-button-group button").removeClass("active");
         $(this).addClass("active");
+    });
+</script>
+
+<script>
+    $(function() {
+        $('input[name="daterange"]')
+            .daterangepicker({
+                opens: "left",
+                timePicker: true,
+                timePicker24Hour: false,
+                timePickerIncrement: 1,
+                timePickerSeconds: false,
+                locale: {
+                    format: "HH:mm a",
+                },
+            })
+            .on("show.daterangepicker", function(ev, picker) {
+                picker.container.find(".calendar-table").hide();
+            });
+
+        $("#dateonly").datepicker();
+
+        $('input[type="date"]')
+            .on("change", function() {
+                this.setAttribute(
+                    "data-date",
+                    moment(this.value, "YYYY-MM-DD").format(
+                        this.getAttribute("data-date-format")
+                    )
+                );
+            })
+            .trigger("change");
     });
 </script>

@@ -105,7 +105,7 @@
                             <li onclick="openSearchBar()">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </li>
-                            <a href="/">
+                            <a href="{{ route('frontend.checkout.index') }}">
                                 <li>
                                     <i class="fa-solid fa-cart-shopping"></i>
 

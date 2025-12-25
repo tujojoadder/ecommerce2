@@ -29,13 +29,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::as('frontend.')->group(function () {
- /*        Route::get('/', [FrontendController::class, 'index'])->name('index');
+    /*        Route::get('/', [FrontendController::class, 'index'])->name('index');
     Route::get('about-us', [FrontendController::class, 'aboutUs'])->name('about.us');
     Route::get('product/{slug}/{id}', [FrontendController::class, 'productView'])->name('product.view');
     Route::get('/get/categories', [FrontendController::class, 'getCategories'])->name('get.categories'); */
     // Cart ============
     Route::prefix('add-cart')->as('addCart.')->group(function () {
         Route::post('/store', [CartController::class, 'store'])->name('store');
+        Route::post('/storecheckout', [CartController::class, 'storeCheckOut'])->name('store.checkout');
         Route::post('/update', [CartController::class, 'update'])->name('update');
         Route::get('/get/data', [CartController::class, 'fetchData'])->name('get.data');
         Route::get('/cookie/remove/{product_id}', [CartController::class, 'destroy'])->name('destroy');
@@ -44,7 +45,7 @@ Route::as('frontend.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('shop', [HomeController::class, 'shop'])->name('shop');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-    
+
     Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.item');
 
     Route::prefix('checkout')->as('checkout.')->group(function () {
@@ -57,7 +58,7 @@ Route::as('frontend.')->group(function () {
 Route::get('/get/district/{division_id}', [HomeController::class, 'getdistrict'])->name('get.district');
 Route::get('/get/upazila/{district_id}', [HomeController::class, 'getUpazila'])->name('get.upazila');
 
- 
+
 
 
 // Route::get('/', function () {

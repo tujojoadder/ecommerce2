@@ -86,12 +86,12 @@
                                 <h4 class="heading4">Quantity</h4>
 
                                 <div class="d-flex quantity">
-                                    <span class="quantity-down">
+                                    <span class="quantity-down" data-id="{{ $item->id }}">
                                         <i class="fa-solid fa-minus"></i>
                                     </span>
-                                    <input type="number" min="1" max="100" step="1" value="1"
-                                        readonly />
-                                    <span class="quantity-up">
+                                    <input type="number" min="1" max="100" step="1" class="cart-qty"
+                                        data-id="{{ $item->id }}" value="{{ $cartData->quantity ?? 1 }}" readonly />
+                                    <span class="quantity-up" data-id="{{ $item->id }}">
                                         <i class="fa-solid fa-plus"></i>
                                     </span>
                                 </div>
@@ -137,7 +137,7 @@
                             </div>
                         </div>
 
-                        <a href="{{ url('cart') }}">
+                        <a href="{{ route('frontend.checkout.index') }}">
                             <button class="button-1 mt-30">Add to cart</button>
                         </a>
                     </div>
@@ -280,3 +280,99 @@
     </div>
 
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            // Quantity increase button
+            $(document).on('click', '.quantity-up', function() {
+                var product_id = $(this).data('id');
+                var input = $('.cart-qty');
+
+                var qty = parseInt(input.val());
+
+                if (qty < 100) {
+                    /*  qty++; */
+                    input.val(qty);
+
+                    // Update cart via AJAX
+                    addToCartCheckout(product_id);
+                }
+            });
+
+            function addToCartCheckout(product_id) {
+                var input = $('.cart-qty');
+                var qty = parseInt(input.val());
+
+                var url = "{{ route('frontend.addCart.store.checkout') }}";
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        product_id: product_id,
+                        qty: qty,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: url,
+                    success: function(data) {
+                        if (data[0] == 'success') {
+
+                            addCartData();
+                        } else if (data[0] == 'increase') {
+
+                            addCartData();
+                        } else {
+                            Swal.fire({
+                                title: 'Sorry',
+                                text: "Something Wrong.",
+                                icon: 'warning',
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                            });
+                        }
+                    }
+                });
+            }
+
+
+
+            // Quantity decrease button
+            $(document).on('click', '.quantity-down', function() {
+
+                var product_id = $(this).data('id');
+                var input = $('.cart-qty');
+                var qty = parseInt(input.val());
+
+                if (qty >= 1) {
+                    /*    qty--; */
+                    input.val(qty);
+
+                    // Update cart via AJAX
+                    updateCartQuantity(product_id, qty);
+                }
+            });
+
+            // Function to update cart quantity
+            function updateCartQuantity(product_id, qty) {
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('frontend.addCart.update') }}",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        product_id: product_id,
+                        quantity: qty
+                    },
+                    success: function(res) {
+                        if (res == 'success') {
+                            addCartData(); // Refresh cart
+                        }
+                    }
+                });
+            }
+
+        });
+    </script>
+@endpush
