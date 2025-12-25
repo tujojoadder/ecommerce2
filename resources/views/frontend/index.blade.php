@@ -34,8 +34,7 @@
             <div class="selling-top">
                 <div class="selling-img marg-d-30">
                     <div class="selling-wrap">
-                        <img src="{{ asset('frontend/assets/images/home/selling/best-selling.png') }}" alt=""
-                            class="" />
+                        <img src="{{ asset('frontend/images/bestproduct/1.png') }}" alt="" class="" />
                         <div class="selling-card-text-1">
                             <p class="heading-3">Get 50% Off</p>
                             <p class="heading-4">Best Selling</p>
@@ -50,8 +49,7 @@
                 <div class="selling-duo">
                     <div class="selling-img marg-30">
                         <div class="selling-wrap">
-                            <img src="{{ asset('frontend/assets/images/home/selling/image.png') }}" class=""
-                                alt="" />
+                            <img src="{{ asset('frontend/images/bestproduct/2.png') }}" class="" alt="" />
                             <div class="selling-card-text-2">
                                 <p class="heading-4">Big Saving</p>
                                 <p class="heading-3">Flat 50% Off</p>
@@ -62,7 +60,7 @@
 
                     <div class="selling-img">
                         <div class="selling-wrap">
-                            <img src="{{ asset('frontend/assets/images/home/selling/summer-pots.png') }}" alt="" />
+                            <img src="{{ asset('frontend/images/bestproduct/3.png') }}" alt="" />
                             <div class="selling-card-text-3">
                                 <p class="heading-5">Summer's Pots</p>
                             </div>
@@ -76,8 +74,7 @@
                 <div class="selling-duo">
                     <div class="selling-img marg-30">
                         <div class="selling-wrap">
-                            <img src="{{ asset('frontend/assets/images/home/selling/quality-products.png') }}"
-                                alt="" />
+                            <img src="{{ asset('frontend/images/bestproduct/4.png') }}" alt="" />
                             <div class="selling-card-text-4">
                                 <p class="heading-5">Quality Product</p>
                             </div>
@@ -86,7 +83,7 @@
                     </div>
                     <div class="selling-img marg-d-30">
                         <div class="selling-wrap">
-                            <img src="{{ asset('frontend/assets/images/home/selling/green-plants.png') }}" alt="" />
+                            <img src="{{ asset('frontend/images/bestproduct/5.png') }}" alt="" />
                             <div class="selling-card-text-5">
                                 <p class="heading-4">Green Plants</p>
                                 <p class="heading-3">Flat 50% Off</p>
@@ -97,8 +94,7 @@
                 </div>
                 <div class="selling-img">
                     <div class="selling-wrap">
-                        <img src="{{ asset('frontend/assets/images/home/selling/popular.png') }}" class=""
-                            alt="" />
+                        <img src="{{ asset('frontend/images/bestproduct/6.png') }}" class="" alt="" />
                         <div class="selling-card-text-6">
                             <p class="heading-4">Popular</p>
                             <p class="heading-3">Collection of Cactus</p>
@@ -396,8 +392,7 @@
             </div>
             <a href="https://www.instagram.com/" target="_blank" class="first-image">
                 <div>
-                    <img src="{{ asset('frontend/assets/images/home/subscribe/first-image.png') }}" class="img-bg"
-                        alt="" />
+                    <img src="{{ asset('frontend/images/subscribe/1.png') }}" class="img-bg" alt="" />
                 </div>
                 <img src="{{ asset('frontend/assets/images/home/subscribe/insta.png') }}" class="instagram-logo"
                     alt="" />
@@ -405,8 +400,7 @@
             </a>
             <a href="https://www.instagram.com/" target="_blank" class="second-image">
                 <div>
-                    <img src="{{ asset('frontend/assets/images/home/subscribe/second-image.png') }}" class="img-bg"
-                        alt="" />
+                    <img src="{{ asset('frontend/images/subscribe/2.png') }}" class="img-bg" alt="" />
                 </div>
                 <img src="{{ asset('frontend/assets/images/home/subscribe/insta.png') }}" class="instagram-logo"
                     alt="" />
@@ -414,8 +408,7 @@
             </a>
             <a href="https://www.instagram.com/" target="_blank" class="third-image">
                 <div>
-                    <img src="{{ asset('frontend/assets/images/home/subscribe/third-image.png') }}" class="img-bg"
-                        alt="" />
+                    <img src="{{ asset('frontend/images/subscribe/3.png') }}" class="img-bg" alt="" />
                 </div>
                 <img src="{{ asset('frontend/assets/images/home/subscribe/insta.png') }}" class="instagram-logo"
                     alt="" />
@@ -423,8 +416,7 @@
             </a>
             <a href="https://www.instagram.com/" target="_blank" class="fourth-image">
                 <div>
-                    <img src="{{ asset('frontend/assets/images/home/subscribe/fourth-image.png') }}" class="img-bg"
-                        alt="" />
+                    <img src="{{ asset('frontend/images/subscribe/4.png') }}" class="img-bg" alt="" />
                 </div>
                 <img src="{{ asset('frontend/assets/images/home/subscribe/insta.png') }}" class="instagram-logo"
                     alt="" />
@@ -432,8 +424,7 @@
             </a>
             <a href="https://www.instagram.com/" target="_blank" class="fifth-image">
                 <div>
-                    <img src="{{ asset('frontend/assets/images/home/subscribe/fifth-image.png') }}" class="img-bg"
-                        alt="" />
+                    <img src="{{ asset('frontend/images/subscribe/5.png') }}" class="img-bg" alt="" />
                 </div>
                 <img src="{{ asset('frontend/assets/images/home/subscribe/insta.png') }}" class="instagram-logo"
                     alt="" />
@@ -514,15 +505,15 @@
                     available, but the majority have but the majority have suffered
                 </p>
                 <div class="article-writer-info">
-                    <img class="rounded-circle h-100"
-                        src="{{ asset('frontend/assets/images/home/article/person-1.png') }}" alt="" />
+                    <img class="rounded-circle h-100" src="{{ asset('frontend/images/article/p1.png') }}"
+                        alt="" />
                     <p>
                         <span class="article-name">Mr. Onsequat</span> <br />
                         <span class="article-designation">Vesoz Admin</span>
                     </p>
                 </div>
                 <div class="article-img mt-30">
-                    <img src="{{ asset('frontend/assets/images/home/article/house-beautiful.png') }}" alt="" />
+                    <img src="{{ asset('frontend/images/article/1.png') }}" alt="" />
                 </div>
             </div>
             <div class="article-card">
@@ -533,15 +524,15 @@
                     available, but the majority have but the majority have suffered
                 </p>
                 <div class="article-writer-info">
-                    <img class="rounded-circle h-100"
-                        src="{{ asset('frontend/assets/images/home/article/person-2.png') }}" alt="" />
+                    <img class="rounded-circle h-100" src="{{ asset('frontend/images/article/p2.png') }}"
+                        alt="" />
                     <p>
                         <span class="article-name">Mr. Onsequat</span> <br />
                         <span class="article-designation">Vesoz Admin</span>
                     </p>
                 </div>
                 <div class="article-img mt-30">
-                    <img src="{{ asset('frontend/assets/images/home/article/plants-help.png') }}" alt="" />
+                    <img src="{{ asset('frontend/images/article/2.png') }}" alt="" />
                 </div>
             </div>
             <div class="article-card">
@@ -552,15 +543,15 @@
                     available, but the majority have but the majority have suffered
                 </p>
                 <div class="article-writer-info">
-                    <img class="rounded-circle h-100"
-                        src="{{ asset('frontend/assets/images/home/article/person-3.png') }}" alt="" />
+                    <img class="rounded-circle h-100" src="{{ asset('frontend/images/article/p3.png') }}"
+                        alt="" />
                     <p>
                         <span class="article-name">Mr. Onsequat</span> <br />
                         <span class="article-designation">Vesoz Admin</span>
                     </p>
                 </div>
                 <div class="article-img mt-30">
-                    <img src="{{ asset('frontend/assets/images/home/article/buying-cars.png') }}" alt="" />
+                    <img src="{{ asset('frontend/images/article/3.png') }}" alt="" />
                 </div>
             </div>
         </div>

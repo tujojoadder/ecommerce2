@@ -42,6 +42,33 @@
     <!-- Flip-clock CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/flip-clock.css') }}" />
 
+
+
+
+    <style>
+        #time .container {
+            background-image: url("{{ asset('frontend/images/time.jpeg') }}") !important;
+            ;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #subscribe .subscribe-body .join-newsletter {
+            background-image: url("{{ asset('frontend/images/subscribe1.jpeg') }}") !important;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .short-banner.profile-banner,
+        .profile-banner.profile-banner {
+            background-image: url("{{ asset('frontend/images/checkout.png') }}") !important;
+        }
+    </style>
+
     <!-- jQuery CDN -->
     <script src="./js/vendor/jquery-3.6.3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
