@@ -243,6 +243,7 @@
                 success: function(res) {
                     if (res == 'success') {
                         addCheckoutCartData(); // Refresh cart
+                        addCartData();
                     }
                 }
             });
