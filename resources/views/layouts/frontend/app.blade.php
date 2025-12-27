@@ -147,7 +147,10 @@
                             html += '<div style="display: flex; align-items: center; gap: 8px;">';
 
                             // Minus Button
-                            html += '<button class="qty-btn" onclick="updateQuantity(' + value.product
+                            html +=
+                                '<button class="qty-btn bg-secondary text-white" onclick="updateQuantity(' +
+                                value
+                                .product
                                 .id +
                                 ', -1)" style="width: 20px; height: 20px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center;">-</button>';
 
@@ -158,7 +161,9 @@
                                 value.product.id + ', this.value)" />';
 
                             // Plus Button
-                            html += '<button class="qty-btn" onclick="updateQuantity(' + value.product
+                            html +=
+                                '<button class="qty-btn bg-success text-white" onclick="updateQuantity(' +
+                                value.product
                                 .id +
                                 ', 1)" style="width: 20px; height: 20px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center;">+</button>';
 

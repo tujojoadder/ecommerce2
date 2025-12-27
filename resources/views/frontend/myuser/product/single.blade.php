@@ -238,16 +238,15 @@
                     @foreach ($products as $product)
                         <div class="product-card">
                             <div class="img-wrapper mb-20">
-                                <a href="#">
-                                    <img style="width: 320px; height:340px;"
-                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                        class="img-fluid" />
-                                </a>
-                                <a href="">
-                                    <img style="width: 320px; height:340px;"
-                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                        class="img-fluid hovered-img" />
-                                </a>
+
+                                <img style="width: 320px; height:340px;"
+                                    src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                    class="img-fluid" />
+
+                                <img style="width: 320px; height:340px;"
+                                    src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                    class="img-fluid hovered-img" />
+
 
                                 <div class="overlay">
                                     <div class="icon-wrapper">

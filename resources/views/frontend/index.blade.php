@@ -131,15 +131,15 @@
                         <div class="product-card">
 
                             <div class="img-wrapper mb-20">
-                                <a href="/">
-                                    <img style="width:320ppx; height:340px;"
-                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                        class="img-fluid" />
+
+                                <img style="width:320ppx; height:340px;"
+                                    src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                    class="img-fluid" />
                                 </a>
-                                <a href="/">
-                                    <img style="width:320ppx; height:340px;"
-                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                        class="img-fluid hovered-img" />
+
+                                <img style="width:320ppx; height:340px;"
+                                    src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                    class="img-fluid hovered-img" />
                                 </a>
                                 <div class="overlay">
                                     <div class="icon-wrapper">
@@ -184,15 +184,15 @@
                     <div class="col-sm-6 col-lg-4 col-xl-3 item best-seller">
                         <div class="product-card">
                             <div class="img-wrapper mb-20">
-                                <a href="/">
-                                    <img style="width:320ppx; height:340px;"
-                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                        class="img-fluid" />
+
+                                <img style="width:320ppx; height:340px;"
+                                    src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                    class="img-fluid" />
                                 </a>
-                                <a href="/">
-                                    <img style="width:320ppx; height:340px;"
-                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                        class="img-fluid hovered-img" />
+
+                                <img style="width:320ppx; height:340px;"
+                                    src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                    class="img-fluid hovered-img" />
                                 </a>
                                 <div class="overlay">
                                     <div class="icon-wrapper">
@@ -236,15 +236,15 @@
                     <div class="col-sm-6 col-lg-4 col-xl-3 item trending">
                         <div class="product-card">
                             <div class="img-wrapper mb-20">
-                                <a href="/">
-                                    <img style="width:320ppx; height:340px;"
-                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                        class="img-fluid" />
+
+                                <img style="width:320ppx; height:340px;"
+                                    src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                    class="img-fluid" />
                                 </a>
-                                <a href="/">
-                                    <img style="width:320ppx; height:340px;"
-                                        src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                        class="img-fluid hovered-img" />
+
+                                <img style="width:320ppx; height:340px;"
+                                    src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                    class="img-fluid hovered-img" />
                                 </a>
                                 <div class="overlay">
                                     <div class="icon-wrapper">
@@ -329,15 +329,15 @@
                 @foreach ($products as $product)
                     <div class="product-card">
                         <div class="img-wrapper mb-20">
-                            <a href="#">
-                                <img style="height: 320px; width:320px;"
-                                    src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                    class="img-fluid" />
-                            </a>
-                            <a href="">
-                                <img src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                    class="img-fluid hovered-img" />
-                            </a>
+
+                            <img style="height: 320px; width:320px;"
+                                src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                class="img-fluid" />
+
+
+                            <img src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                class="img-fluid hovered-img" />
+
 
                             <div class="overlay">
                                 <div class="icon-wrapper">
@@ -443,15 +443,14 @@
                 @foreach ($products as $product)
                     <div class="top-card">
                         <div class="img-wrapper mb-20">
-                            <a href="#">
-                                <img style="height: 124px; width:130px;"
-                                    src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                    class="img-fluid" />
-                            </a>
-                            <a href="#">
-                                <img src="{{ asset('storage/product/' . $product->image) }}" alt=""
-                                    class="img-fluid hovered-img" />
-                            </a>
+
+                            <img style="height: 124px; width:130px;"
+                                src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                class="img-fluid" />
+
+                            <img src="{{ asset('storage/product/' . $product->image) }}" alt=""
+                                class="img-fluid hovered-img" />
+
                             <div class="overlay"></div>
                         </div>
 
