@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\BlogCategoryController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -45,9 +46,25 @@ Route::as('frontend.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('shop', [HomeController::class, 'shop'])->name('shop');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-
     Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.item');
+    //blog
+    Route::prefix('blog')->as('blog.')->group(function () {
 
+        //blog category
+        Route::prefix('category')->as('category.')->group(function () {
+            Route::get('/', [BlogCategoryController::class, 'index'])->name('index');
+            Route::get('/create', [BlogCategoryController::class, 'create'])->name('create');
+            Route::post('/store', [BlogCategoryController::class, 'store'])->name('store');
+
+            Route::get('/{blogCategory}/edit', [BlogCategoryController::class, 'edit'])->name('edit');
+            Route::put('/{blogCategory}', [BlogCategoryController::class, 'update'])->name('update');
+            Route::delete('/{blogCategory}', [BlogCategoryController::class, 'destroy'])->name('destroy');
+            Route::post('/{blogCategory}/status', [BlogCategoryController::class, 'updateStatus'])->name('status');
+        });
+    });
+
+
+    //checkout
     Route::prefix('checkout')->as('checkout.')->group(function () {
         Route::get('/', [CheckoutController::class, 'index'])->name('index');
         Route::post('/store', [CheckoutController::class, 'store'])->name('store');

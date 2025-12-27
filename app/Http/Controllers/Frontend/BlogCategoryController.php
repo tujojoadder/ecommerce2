@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
@@ -20,8 +20,8 @@ class BlogCategoryController extends Controller
             ->whereNull('deleted_at')->paginate(10);
 
         $pageTitle = __('Manage Blog Categories');
-        
-        return view('admin.blog-categories.index', compact('blogCategories', 'pageTitle'));
+
+        return view('frontend.myuser.blog.category.index', compact('blogCategories', 'pageTitle'));
     }
 
     /**
@@ -30,7 +30,7 @@ class BlogCategoryController extends Controller
     public function create()
     {
         $pageTitle = __('Create Blog Category');
-        return view('admin.blog-categories.create', compact('pageTitle'));
+        return view('frontend.myuser.blog.category.create', compact('pageTitle'));
     }
 
     /**
@@ -50,8 +50,7 @@ class BlogCategoryController extends Controller
             $blogCategory->status = strip_tags($request->status) ?? 1;
             $blogCategory->save();
 
-            return redirect()->route('admin.blog-categories.index')->with('success', __('Blog category created successfully.'));
-
+            return redirect()->route('frontend.blog.category.index')->with('success', __('Blog category created successfully.'));
         } catch (\Exception $e) {
             return redirect()->back()
                 ->withInput()
@@ -65,7 +64,7 @@ class BlogCategoryController extends Controller
     public function edit(BlogCategory $blogCategory)
     {
         $pageTitle = __('Edit Blog Category');
-        return view('admin.blog-categories.edit', compact('blogCategory', 'pageTitle'));
+        return view('frontend.myuser.blog.category.edit', compact('blogCategory', 'pageTitle'));
     }
 
     /**
@@ -84,9 +83,8 @@ class BlogCategoryController extends Controller
             $blogCategory->status = strip_tags($request->status) ?? 1;
             $blogCategory->save();
 
-            return redirect()->route('admin.blog-categories.index')
+            return redirect()->route('frontend.blog.category.index')
                 ->with('success', __('Blog category updated successfully'));
-
         } catch (\Exception $e) {
             return redirect()->back()
                 ->withInput()
@@ -103,9 +101,8 @@ class BlogCategoryController extends Controller
 
             $blogCategory->delete();
 
-            return redirect()->route('admin.blog-categories.index')
+            return redirect()->route('frontend.blog.category.index')
                 ->with('success', __('Blog category deleted successfully'));
-
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', $e->getMessage());
@@ -130,7 +127,6 @@ class BlogCategoryController extends Controller
                 'message' => __('Status updated successfully'),
                 'status' => $blogCategory->status
             ]);
-
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
