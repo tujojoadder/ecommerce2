@@ -31,7 +31,13 @@ const API_PATH_V1 = 'base/path/v1/api';
 
 
 if (! function_exists('text_limit')) {
-    function text_limit($text, $limit = 35)
+    function text_limit($text, $limit = 40)
+    {
+        return Str::limit($text, $limit, '...');
+    }
+}
+if (! function_exists('para_limit')) {
+    function para_limit($text, $limit = 120)
     {
         return Str::limit($text, $limit, '...');
     }

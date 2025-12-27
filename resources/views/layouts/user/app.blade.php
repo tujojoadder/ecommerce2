@@ -227,6 +227,7 @@
             border-radius: 10px 10px !important;
         }
     </style>
+
     <link rel="stylesheet" href="{{ asset('dashboard/css/sorted.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/css/custom-animated.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('dashboard/css/custom.css') }}"> --}}

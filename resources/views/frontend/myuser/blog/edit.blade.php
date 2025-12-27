@@ -1,8 +1,7 @@
 @extends('layouts.user.app')
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('backend/css/tagify.css') }}">
-@endpush
+
 @section('content')
+    <link rel="stylesheet" href="{{ asset('backend/css/tagify.css') }}">
     <div class="container-fluid my-4">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
@@ -11,7 +10,7 @@
                         <h4 class="card-title">{{ $pageTitle }}</h4>
                         <div>
                             <a href="{{ route('user.blog.index') }}" class="btn btn-primary btn-sm">
-                                <i class="fa-solid fa-arrow-left"></i> __('Back to List')
+                                <i class="fa-solid fa-arrow-left"></i> Back to List
                             </a>
                         </div>
                     </div>

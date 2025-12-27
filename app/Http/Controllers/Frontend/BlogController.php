@@ -40,6 +40,7 @@ class BlogController extends Controller
         return view('frontend.myuser.blog.index', compact('blogs', 'pageTitle'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      */
@@ -237,5 +238,22 @@ class BlogController extends Controller
                 'message' => __('Error updating status')
             ], 500);
         }
+    }
+
+    /* fontend */
+
+    public function frontendIndex()
+    {
+        $blogs =  Blog::with('category')->whereNull('deleted_at')->get();
+
+        return view('frontend.blog', compact('blogs'));
+    }
+    public function frontendShow($id)
+    {
+
+        $blog =  Blog::whereNull('deleted_at')
+            ->where('id', $id)->firstOrFail();
+
+        return view('frontend.single-blog', compact('blog'));
     }
 }

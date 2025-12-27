@@ -187,7 +187,7 @@
 
                 {{-- blog --}}
                 <li
-                    class="slide {{ Request::is('user/blog*') || Request::is('user/category*') ? 'is-expanded' : '' }}">
+                    class="slide {{ Request::is('user/blog*') || Request::is('frontend/category*') ? 'is-expanded' : '' }}">
                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:;">
                         <i class="side-menu__icon fa-solid fa-blog"></i>
                         <span class="side-menu__label">Blog</span>
@@ -196,7 +196,7 @@
                     <ul class="slide-menu">
                         <!-- Blog List -->
                         <li>
-                            <a class="slide-item {{ Request::routeIs('user.blog.*') ? 'active' : '' }}"
+                            <a class="slide-item {{ Request::is('frontend/blog*') ? 'active' : '' }}"
                                 href="{{ route('user.blog.index') }}">
                                 <span class="sub-side-menu__label">Blog List</span>
                             </a>
@@ -204,7 +204,7 @@
 
                         <!-- Categories -->
                         <li>
-                            <a class="slide-item {{ Request::is('user/blog/category*') ? 'active' : '' }}"
+                            <a class="slide-item {{ Request::is('frontend/category*') ? 'active' : '' }}"
                                 href="{{ route('user.blog.category.index') }}">
                                 <span class="sub-side-menu__label">Categories</span>
                             </a>

@@ -1,8 +1,8 @@
 @extends('layouts.user.app')
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('backend/css/tagify.css') }}">
-@endpush
+
+
 @section('content')
+    <link rel="stylesheet" href="{{ asset('backend/css/tagify.css') }}">
     <div class="container-fluid my-4">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">

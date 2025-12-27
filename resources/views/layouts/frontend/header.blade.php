@@ -98,7 +98,7 @@
                             </li>
                             <li><a href="/"> Product </a></li>
 
-                            <li><a href=""> Blog </a></li>
+                            <li><a href="{{ route('frontend.blogs') }}"> Blog </a></li>
 
 
 
@@ -159,7 +159,7 @@
                     <a href="/">
                         <h3 class="heading3">Product</h3>
                     </a>
-                    <a href="/">
+                    <a href="{{ route('frontend.blogs') }}">
                         <h3 class="heading3">Blog</h3>
                     </a>
                     <a href="/">

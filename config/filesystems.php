@@ -74,6 +74,7 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+
         'blog' => [
             'driver' => 'local',
             'root' => storage_path('app/public/blog'),

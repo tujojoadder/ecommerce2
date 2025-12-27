@@ -1,7 +1,77 @@
 @extends('layouts.user.app')
+@push('head')
+    <style>
+        /* Toggle Switch Custom Styling */
+        .form-check-input.status-toggle {
+            width: 50px !important;
+            height: 25px !important;
+            cursor: pointer;
+            border: none;
+            background-color: #6c757d !important;
+            /* Gray for unchecked */
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
+        .form-check-input.status-toggle:checked {
+            background-color: #0d6efd !important;
+            /* Bootstrap primary blue */
+        }
+
+        .form-check-input.status-toggle:focus {
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+            /* Blue glow */
+            outline: none;
+        }
+
+        /* Switch Circle/Handle */
+        .form-check-input.status-toggle::after {
+            content: '';
+            position: absolute;
+            width: 21px;
+            height: 21px;
+            background-color: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-check-input.status-toggle:checked::after {
+            left: 27px;
+        }
+
+        /* Form Check Container */
+        .form-check.form-switch {
+            padding-left: 0;
+            min-height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hover Effect */
+        .form-check-input.status-toggle:hover {
+            opacity: 0.9;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Active/Pressed Effect */
+        .form-check-input.status-toggle:active::after {
+            width: 26px;
+        }
+
+        /* Table Image Styling */
+        .table-img {
+            border-radius: 8px;
+            object-fit: cover;
+            height: 60px;
+        }
+    </style>
+@endpush
 @section('content')
-    <div class="container-fluid my-4">
+    <div class="container-fluid my-4 ">
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -9,7 +79,7 @@
                         <h4 class="card-title">{{ $pageTitle }}</h4>
                         <div>
                             <a href="{{ route('user.blog.create') }}" class="btn btn-primary btn-sm">
-                                <i class="fa fa-plus"></i> Add new
+                                <i class="fas fa-plus-square"></i> Add new
                             </a>
                         </div>
                     </div>
@@ -48,11 +118,11 @@
                                 <!-- Buttons -->
                                 <div class="col-md-3 d-flex gap-2">
                                     <button type="submit" class="btn btn-success w-100">
-                                        <i class="fa-solid fa-filter"></i> Filter
+                                        <i class="fas fa-filter"></i> Filter
                                     </button>
 
                                     <a href="{{ route('user.blog.index') }}" class="btn btn-danger w-100">
-                                        <i class="fa-solid fa-broom"></i> Clear
+                                        <i class="fas fa-redo-alt"></i> Clear
                                     </a>
                                 </div>
 
@@ -68,8 +138,6 @@
                                         <th>Title</th>
                                         <th>Category</th>
                                         <th>Status</th>
-                                        <th>Published</th>
-                                        <th>Created</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -90,15 +158,9 @@
                                                 <span
                                                     class="badge badge-success text-dark">{{ $blog->category->name ?? 'N/A' }}</span>
                                             </td>
-                                            <td>
-                                                <span
-                                                    class="badge text-dark badge-{{ $blog->is_published ? 'success' : 'danger' }}">
-                                                    {{ $blog->is_published == 1 ? 'Published' : 'Draft' }}
-                                                </span>
-                                            </td>
 
-                                            <td>
-                                                {{ $blog->published_at ? $blog->published_at->format('d-m-Y') : 'N/A' }}
+
+                                            <td class="text-center">
                                                 <div class="form-check form-switch">
                                                     <input type="checkbox" class="form-check-input status-toggle"
                                                         data-id="{{ $blog->id }}"
@@ -107,13 +169,16 @@
                                                     <label class="form-check-label"></label>
                                                 </div>
                                             </td>
-                                            <td>{{ $blog->created_at->format('d-m-Y') }}</td>
+
+
+
+
                                             <td>
-                                                <div class="d-flex gap-5">
+                                                <div class="d-flex gap-2">
                                                     <a href="{{ route('user.blog.edit', $blog->id) }}"
                                                         class="btn btn-sm btn-warning w-40 tooltip-btn"
                                                         data-tooltip="Edit Blog">
-                                                        <i class="fa-regular fa-pen-to-square"></i>
+                                                        <i class="fas fa-edit"></i>
                                                     </a>
                                                     <form id="delete-form-{{ $blog->id }}"
                                                         action="{{ route('user.blog.destroy', $blog->id) }}" method="POST"
@@ -123,7 +188,7 @@
                                                         <button type="button"
                                                             class="btn btn-sm btn-danger w-100 deleteBtn tooltip-btn"
                                                             data-id="{{ $blog->id }}" data-tooltip="Delete Blog">
-                                                            <i class="fa-regular fa-trash-can"></i>
+                                                            <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                     </form>
                                                 </div>

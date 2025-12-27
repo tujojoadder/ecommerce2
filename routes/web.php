@@ -48,7 +48,8 @@ Route::as('frontend.')->group(function () {
     Route::get('shop', [HomeController::class, 'shop'])->name('shop');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.item');
-
+    Route::get('/blogs', [BlogController::class, 'frontendIndex'])->name('blogs');
+    Route::get('/blog/{id}', [BlogController::class, 'frontendShow'])->name('frontend.blog.show');
 
 
 
