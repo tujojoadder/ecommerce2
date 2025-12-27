@@ -74,6 +74,13 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'blog' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/blog'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
 
         'slider' => [
             'driver' => 'local',

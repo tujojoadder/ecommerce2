@@ -54,6 +54,7 @@ class ProductController extends Controller
             // Upload main product image
             $file = new FileManager();
             if ($request->image) {
+
                 if ($request->image != null) {
                     Storage::disk('product')->delete($request->image);
                 }

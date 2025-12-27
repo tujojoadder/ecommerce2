@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Frontend\BlogCategoryController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ContactController;
@@ -50,6 +51,14 @@ Route::as('frontend.')->group(function () {
     //blog
     Route::prefix('blog')->as('blog.')->group(function () {
 
+        Route::get('/', [BlogController::class, 'index'])->name('index');
+        Route::get('/create', [BlogController::class, 'create'])->name('create');
+        Route::post('/store', [BlogController::class, 'store'])->name('store');
+
+        Route::get('/{id}/edit', [BlogController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [BlogController::class, 'update'])->name('update');
+        Route::delete('/{blog}', [BlogController::class, 'destroy'])->name('destroy');
+        Route::post('/{blog}/status', [BlogController::class, 'updateStatus'])->name('status');
         //blog category
         Route::prefix('category')->as('category.')->group(function () {
             Route::get('/', [BlogCategoryController::class, 'index'])->name('index');
