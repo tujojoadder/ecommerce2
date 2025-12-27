@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app')
+@extends('layouts.user.app')
 
 @section('content')
     <div class="container-fluid my-4">
@@ -8,7 +8,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title">{{ $pageTitle }}</h4>
                         <div>
-                            <a href="{{ route('frontend.blog.category.create') }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('user.blog.category.create') }}" class="btn btn-primary btn-sm">
                                 <i class="fa-solid fa-plus"></i> Add New Category
                             </a>
                         </div>
@@ -38,19 +38,19 @@
                                                     <input type="checkbox" class="form-check-input status-toggle"
                                                         data-id="{{ $category->id }}"
                                                         {{ $category->status == 1 ? 'checked' : '' }}
-                                                        data-url="{{ route('frontend.blog.category.status', $category->id) }}">
+                                                        data-url="{{ route('user.blog.category.status', $category->id) }}">
                                                     <label class="form-check-label"></label>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex gap-5">
-                                                    <a href="{{ route('frontend.blog.category.edit', $category->id) }}"
+                                                    <a href="{{ route('user.blog.category.edit', $category->id) }}"
                                                         class="btn btn-sm btn-warning w-40 tooltip-btn"
                                                         data-tooltip="Edit Category">
                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                     </a>
                                                     <form id="delete-form-{{ $category->id }}"
-                                                        action="{{ route('frontend.blog.category.destroy', $category->id) }}"
+                                                        action="{{ route('user.blog.category.destroy', $category->id) }}"
                                                         method="POST" class="w-40">
                                                         @csrf
                                                         @method('DELETE')

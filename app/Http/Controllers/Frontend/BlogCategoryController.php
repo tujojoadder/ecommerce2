@@ -50,7 +50,7 @@ class BlogCategoryController extends Controller
             $blogCategory->status = strip_tags($request->status) ?? 1;
             $blogCategory->save();
 
-            return redirect()->route('frontend.blog.category.index')->with('success', __('Blog category created successfully.'));
+            return redirect()->route('user.blog.category.index')->with('success', __('Blog category created successfully.'));
         } catch (\Exception $e) {
             return redirect()->back()
                 ->withInput()
@@ -83,7 +83,7 @@ class BlogCategoryController extends Controller
             $blogCategory->status = strip_tags($request->status) ?? 1;
             $blogCategory->save();
 
-            return redirect()->route('frontend.blog.category.index')
+            return redirect()->route('user.blog.category.index')
                 ->with('success', __('Blog category updated successfully'));
         } catch (\Exception $e) {
             return redirect()->back()
@@ -101,7 +101,7 @@ class BlogCategoryController extends Controller
 
             $blogCategory->delete();
 
-            return redirect()->route('frontend.blog.category.index')
+            return redirect()->route('user.blog.category.index')
                 ->with('success', __('Blog category deleted successfully'));
         } catch (\Exception $e) {
             return redirect()->back()

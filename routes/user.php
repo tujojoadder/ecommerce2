@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Frontend\BlogCategoryController;
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\AnalyticsDashboardController;
 use App\Http\Controllers\User\StaffController;
@@ -95,6 +97,31 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('view/balance', [AccountController::class, 'balance'])->name('view.balance')->middleware(['permission:access-all|account-view|account-visibility']);
         Route::get('view/statement', [AccountController::class, 'viewStatement'])->name('view.statement')->middleware(['permission:access-all|account-visibility']);
     });
+
+    //blog
+    Route::prefix('blog')->as('blog.')->group(function () {
+
+        Route::get('/', [BlogController::class, 'index'])->name('index');
+        Route::get('/create', [BlogController::class, 'create'])->name('create');
+        Route::post('/store', [BlogController::class, 'store'])->name('store');
+
+        Route::get('/{id}/edit', [BlogController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [BlogController::class, 'update'])->name('update');
+        Route::delete('/{blog}', [BlogController::class, 'destroy'])->name('destroy');
+        Route::post('/{blog}/status', [BlogController::class, 'updateStatus'])->name('status');
+        //blog category
+        Route::prefix('category')->as('category.')->group(function () {
+            Route::get('/', [BlogCategoryController::class, 'index'])->name('index');
+            Route::get('/create', [BlogCategoryController::class, 'create'])->name('create');
+            Route::post('/store', [BlogCategoryController::class, 'store'])->name('store');
+
+            Route::get('/{blogCategory}/edit', [BlogCategoryController::class, 'edit'])->name('edit');
+            Route::put('/{blogCategory}', [BlogCategoryController::class, 'update'])->name('update');
+            Route::delete('/{blogCategory}', [BlogCategoryController::class, 'destroy'])->name('destroy');
+            Route::post('/{blogCategory}/status', [BlogCategoryController::class, 'updateStatus'])->name('status');
+        });
+    });
+
 
     // Staff routes
     Route::prefix('staff')->as('staff.')->group(function () {
@@ -320,8 +347,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Configurtion routes
     Route::resource('config', ConfigController::class);
-    Route::prefix('config')->as('config.')->group(function () {
-    });
+    Route::prefix('config')->as('config.')->group(function () {});
 
     // Project routes
     Route::prefix('project')->as('project.')->group(function () {
@@ -671,7 +697,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/backup-log', [BackupLogController::class, 'backupLogs'])->name('backup.log');
 
-        Route::prefix('server/info')->as('server.info.')->group(function(){
+        Route::prefix('server/info')->as('server.info.')->group(function () {
             Route::get('/', [ServerInfoController::class, 'index'])->name('index');
         });
     });

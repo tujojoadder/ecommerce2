@@ -111,7 +111,7 @@ class BlogController extends Controller
         $blog->save();
 
         return redirect()
-            ->route('frontend.blog.index')
+            ->route('user.blog.index')
             ->with('success', __('Blog created successfully'));
     }
 
@@ -189,7 +189,7 @@ class BlogController extends Controller
 
         $blog->save();
 
-        return redirect()->route('frontend.blog.index')
+        return redirect()->route('user.blog.index')
             ->with('success', __('Blog updated successfully'));
     }
 
@@ -202,7 +202,7 @@ class BlogController extends Controller
 
             $blog->delete();
 
-            return redirect()->route('frontend.blog.index')
+            return redirect()->route('user.blog.index')
                 ->with('success', __('Blog deleted successfully'));
         } catch (\Exception $e) {
             return redirect()->back()

@@ -7,8 +7,10 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="title" content="Online Accounting Billing Inventory Management System - Purchase, Sales, Stock">
-    <meta name="description" content="Manage your business efficiently with our Online Accounting, Billing, and Inventory Management System. Track purchases, sales, and stock effortlessly. Streamline your operations and stay organized.">
-    <meta name="Keywords" content="bhisab,b-hisab,b_hisab,bhishab,vhisab,bhisab,bhisab,accounting,accounting-software,accounting_software,billing,inventory,inventory-software,billing-software" />
+    <meta name="description"
+        content="Manage your business efficiently with our Online Accounting, Billing, and Inventory Management System. Track purchases, sales, and stock effortlessly. Streamline your operations and stay organized.">
+    <meta name="Keywords"
+        content="bhisab,b-hisab,b_hisab,bhishab,vhisab,bhisab,bhisab,accounting,accounting-software,accounting_software,billing,inventory,inventory-software,billing-software" />
     @stack('head')
 
     <!-- CSRF Token -->
@@ -16,9 +18,11 @@
     <!-- Title -->
     <title>{{ config('company.name') }} | {{ $pageTitle ?? 'Dashboard' }}</title>
     <!--- Favicon --->
-    <link rel="icon" href="{{ config('company.logo') ?? asset('dashboard/img/brand/favicon.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ config('company.logo') ?? asset('dashboard/img/brand/favicon.png') }}"
+        type="image/x-icon" />
     <!-- Bootstrap css -->
     <link id="style" href="{{ asset('dashboard/plugin/bootstrap/css/bootstrap.css') }}" rel="stylesheet" />
+
     <!--- Style css --->
     <link href="{{ asset('dashboard/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('dashboard/css/plugins.css') }}" rel="stylesheet">
@@ -37,7 +41,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@500&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet">
     @if (session()->get('locale') == 'bn')
         <style>
             .side-menu__label,
@@ -88,6 +94,7 @@
             .slide.is-expanded a {
                 font-size: 15px !important;
             }
+
             .side-menu__label,
             .sub-side-menu__label,
             .sub-side-menu__item {
@@ -215,7 +222,8 @@
             color: #fff !important;
         }
 
-        a, button {
+        a,
+        button {
             border-radius: 10px 10px !important;
         }
     </style>
@@ -226,7 +234,8 @@
     @include('layouts.user.site-color')
 </head>
 
-<body class="main-body app sidebar-mini ltr {{ smallMenu() == 'small' ? 'sidenav-toggled' : '' }}" style="background-color: white !important;">
+<body class="main-body app sidebar-mini ltr {{ smallMenu() == 'small' ? 'sidenav-toggled' : '' }}"
+    style="background-color: white !important;">
     @include('sweetalert::alert')
     <!-- Loader -->
     @include('layouts.user.preloader')
@@ -266,17 +275,22 @@
 
         <!-- Footer opened -->
         @include('layouts.user.footer')
-        <div style="{{ Route::is('user.purchase.create') || Request::is('user/invoice*') ? 'display: none' : '' }} position: fixed; top: 90%; right: 0; bottom: 0; margin-right: 20px; z-index: 100;">
+        <div
+            style="{{ Route::is('user.purchase.create') || Request::is('user/invoice*') ? 'display: none' : '' }} position: fixed; top: 90%; right: 0; bottom: 0; margin-right: 20px; z-index: 100;">
             <div class="btn-group dropup">
-                <button data-bs-toggle="dropdown" aria-expanded="false" type="button" class="btn btn-success p-2 rounded-circle"><i class="fas fa-plus"></i></button>
+                <button data-bs-toggle="dropdown" aria-expanded="false" type="button"
+                    class="btn btn-success p-2 rounded-circle"><i class="fas fa-plus"></i></button>
                 <div class="dropdown-menu tx-13 shadow p-2" style="inset: auto !important;">
-                    <a href="{{ route('user.configuration.shortcut-menu.index') }}" class="dropdown-item rounded py-1"><i class="fas fa-plus-circle d-inline me-1"></i> {{ __('messages.add_shortcut_menu') }}</a>
+                    <a href="{{ route('user.configuration.shortcut-menu.index') }}"
+                        class="dropdown-item rounded py-1"><i class="fas fa-plus-circle d-inline me-1"></i>
+                        {{ __('messages.add_shortcut_menu') }}</a>
                     @foreach (config('shortcutManu') as $menu)
                         <a href="{{ $menu->address }}" class="dropdown-item rounded py-1">
                             @if ($menu->icon != null)
                                 <i class="{{ $menu->icon }} d-inline me-1"></i>
                             @elseif ($menu->img != null)
-                                <img style="width: 20px; margin-top: -2px;" src="{{ asset('storage/shortcut-manu-icon/' . $menu->img) }}" alt="">
+                                <img style="width: 20px; margin-top: -2px;"
+                                    src="{{ asset('storage/shortcut-manu-icon/' . $menu->img) }}" alt="">
                             @else
                                 <i class="fas fa-plus-circle d-inline me-1 "></i>
                             @endif {{ $menu->title }}
@@ -285,7 +299,8 @@
                 </div>
             </div>
         </div>
-        <div style="{{ Route::is('user.purchase.create') || Request::is('user/invoice*') ? 'display: none' : '' }} position: fixed; top: 90%; right: 0; bottom: 0; margin-right: 70px; z-index: 100;">
+        <div
+            style="{{ Route::is('user.purchase.create') || Request::is('user/invoice*') ? 'display: none' : '' }} position: fixed; top: 90%; right: 0; bottom: 0; margin-right: 70px; z-index: 100;">
             <div class="btn-group dropup rounded-pill support-shortcut-btn-box">
                 <a href="javascript:;" class="btn btn-success p-1 border border-success rounded-pill goto-support-btn">
                     <img class="rounded-circle" style="width: 30px" src="{{ asset('support.gif') }}" alt="">
@@ -336,12 +351,22 @@
     <script src="{{ asset('dashboard/plugin/jquery-simple-datetimepicker/jquery.simple-dtpicker.js ') }}"></script>
     <script src="{{ asset('dashboard/plugin/bootstrap/popper.min.js') }}"></script>
     <script src="{{ asset('dashboard/plugin/bootstrap/js/bootstrap.min.js') }}"></script>
-    @if (!Request::is('user') || !Request::is('user/client') || !Request::is('user/product-barcode') || !Request::is('user/client-group'))
+    @if (
+        !Request::is('user') ||
+            !Request::is('user/client') ||
+            !Request::is('user/product-barcode') ||
+            !Request::is('user/client-group'))
         <script src="{{ asset('dashboard/plugin/select2/js/select2.min.js') }}"></script>
         <script src="{{ asset('dashboard/plugin/select2/js/select2.full.min.js') }}"></script>
     @endif
 
-    @if (!Request::is('user') || !Request::is('user/client') || !Request::is('user/product-barcode') || !Request::is('user/client/create') || !Request::is('user/client-group') || !Request::is('user/product-barcode'))
+    @if (
+        !Request::is('user') ||
+            !Request::is('user/client') ||
+            !Request::is('user/product-barcode') ||
+            !Request::is('user/client/create') ||
+            !Request::is('user/client-group') ||
+            !Request::is('user/product-barcode'))
         <!-- Datatable js -->
         <script src="{{ asset('dashboard/plugin/datatable/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('dashboard/plugin/datatable/js/dataTables.bootstrap5.js') }}"></script>
@@ -367,7 +392,11 @@
     @endif
 
     {{-- <script src="{{ asset('dashboard/plugin/moment/moment.js') }}"></script> --}}
-    @if (!Request::is('user') || !Request::is('user/client') || !Request::is('user/product-barcode') || !Request::is('user/product-barcode'))
+    @if (
+        !Request::is('user') ||
+            !Request::is('user/client') ||
+            !Request::is('user/product-barcode') ||
+            !Request::is('user/product-barcode'))
         <script src="{{ asset('dashboard/plugin/summernote-editor/summernote1.js') }}"></script>
         <script src="{{ asset('dashboard/js/summernote.js') }}"></script>
         <script>
@@ -387,7 +416,11 @@
         <script src="{{ asset('dashboard/plugin/morris.js/morris.min.js') }}"></script>
     @endif
 
-    @if (!Request::is('user/client') || !Request::is('user/product-barcode') || !Request::is('user/client-group') || !Request::is('user/product-barcode'))
+    @if (
+        !Request::is('user/client') ||
+            !Request::is('user/product-barcode') ||
+            !Request::is('user/client-group') ||
+            !Request::is('user/product-barcode'))
         <script src="{{ asset('dashboard/js/script.js') }}"></script>
         <script src="{{ asset('dashboard/js/index.js') }}"></script>
         <script src="{{ asset('dashboard/js/themecolor.js') }}"></script>
@@ -478,7 +511,9 @@
                     var link = $(this).data("link");
                     var iframe = $("<iframe>")
                         .attr("src", link)
-                        .attr("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture")
+                        .attr("allow",
+                            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        )
                         .attr("allowfullscreen", true)
                         .attr("height", "400")
                         .attr("width", "100%");
@@ -554,7 +589,8 @@
                                 });
                                 return;
                             }
-                            window.open('{{ env('API_BASE_PATH') }}/client/login?email=' + data.email + '&token=' + data.token, '_blank');
+                            window.open('{{ env('API_BASE_PATH') }}/client/login?email=' + data
+                                .email + '&token=' + data.token, '_blank');
                         },
                         error: function(response) {
                             Swal.fire({

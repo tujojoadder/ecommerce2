@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app')
+@extends('layouts.user.app')
 @push('styles')
     <link rel="stylesheet" href="{{ asset('backend/css/tagify.css') }}">
 @endpush
@@ -10,13 +10,13 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title">{{ $pageTitle }}</h4>
                         <div>
-                            <a href="{{ route('frontend.blog.index') }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('user.blog.index') }}" class="btn btn-primary btn-sm">
                                 <i class="fa-solid fa-arrow-left"></i> __('Back to List')
                             </a>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('frontend.blog.update', $blog->id) }}" method="POST"
+                        <form action="{{ route('user.blog.update', $blog->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')

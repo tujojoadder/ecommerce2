@@ -48,29 +48,8 @@ Route::as('frontend.')->group(function () {
     Route::get('shop', [HomeController::class, 'shop'])->name('shop');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.item');
-    //blog
-    Route::prefix('blog')->as('blog.')->group(function () {
 
-        Route::get('/', [BlogController::class, 'index'])->name('index');
-        Route::get('/create', [BlogController::class, 'create'])->name('create');
-        Route::post('/store', [BlogController::class, 'store'])->name('store');
 
-        Route::get('/{id}/edit', [BlogController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [BlogController::class, 'update'])->name('update');
-        Route::delete('/{blog}', [BlogController::class, 'destroy'])->name('destroy');
-        Route::post('/{blog}/status', [BlogController::class, 'updateStatus'])->name('status');
-        //blog category
-        Route::prefix('category')->as('category.')->group(function () {
-            Route::get('/', [BlogCategoryController::class, 'index'])->name('index');
-            Route::get('/create', [BlogCategoryController::class, 'create'])->name('create');
-            Route::post('/store', [BlogCategoryController::class, 'store'])->name('store');
-
-            Route::get('/{blogCategory}/edit', [BlogCategoryController::class, 'edit'])->name('edit');
-            Route::put('/{blogCategory}', [BlogCategoryController::class, 'update'])->name('update');
-            Route::delete('/{blogCategory}', [BlogCategoryController::class, 'destroy'])->name('destroy');
-            Route::post('/{blogCategory}/status', [BlogCategoryController::class, 'updateStatus'])->name('status');
-        });
-    });
 
 
     //checkout

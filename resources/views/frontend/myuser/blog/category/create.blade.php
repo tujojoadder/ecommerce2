@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app')
+@extends('layouts.user.app')
 
 @section('content')
     <div class="container-fluid  my-4">
@@ -8,14 +8,13 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title">{{ $pageTitle }}</h4>
                         <div>
-                            <a href="{{ route('frontend.blog.category.index') }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('user.blog.category.index') }}" class="btn btn-primary btn-sm">
                                 <i class="fa-solid fa-arrow-left"></i> Back to List
                             </a>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('frontend.blog.category.store') }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('user.blog.category.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">

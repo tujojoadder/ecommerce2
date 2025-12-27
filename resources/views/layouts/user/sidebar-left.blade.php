@@ -78,6 +78,8 @@
                             src="{{ asset('icon/new/dashboard.svg') }}" alt=""><span
                             class="side-menu__label">{{ __('messages.dashboard') }}</span></a>
                 </li>
+
+
                 @canany(['access-all', 'client-visibility', 'supplier-visibility'])
                     @if (config('sidebar.crm') == 1)
                         <li
@@ -182,6 +184,34 @@
                         </li>
                     @endif
                 @endcanany
+
+                {{-- blog --}}
+                <li
+                    class="slide {{ Request::is('user/blog*') || Request::is('user/category*') ? 'is-expanded' : '' }}">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:;">
+                        <i class="side-menu__icon fa-solid fa-blog"></i>
+                        <span class="side-menu__label">Blog</span>
+                        <i class="angle fe fe-chevron-down"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <!-- Blog List -->
+                        <li>
+                            <a class="slide-item {{ Request::routeIs('user.blog.*') ? 'active' : '' }}"
+                                href="{{ route('user.blog.index') }}">
+                                <span class="sub-side-menu__label">Blog List</span>
+                            </a>
+                        </li>
+
+                        <!-- Categories -->
+                        <li>
+                            <a class="slide-item {{ Request::is('user/blog/category*') ? 'active' : '' }}"
+                                href="{{ route('user.blog.category.index') }}">
+                                <span class="sub-side-menu__label">Categories</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
 
                 @canany(['access-all', 'account-visibility', 'receive-visibility', 'expense-visibility',
                     'transfer-visibility', 'profit-view'])

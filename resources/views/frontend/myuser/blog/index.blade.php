@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app')
+@extends('layouts.user.app')
 
 @section('content')
     <div class="container-fluid my-4">
@@ -8,13 +8,13 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title">{{ $pageTitle }}</h4>
                         <div>
-                            <a href="{{ route('frontend.blog.create') }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('user.blog.create') }}" class="btn btn-primary btn-sm">
                                 <i class="fa fa-plus"></i> Add new
                             </a>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="GET" action="{{ route('frontend.blog.index') }}" class="mb-3">
+                        <form method="GET" action="{{ route('user.blog.index') }}" class="mb-3">
                             <div class="row g-2 align-items-end">
 
                                 <!-- Title -->
@@ -51,7 +51,7 @@
                                         <i class="fa-solid fa-filter"></i> Filter
                                     </button>
 
-                                    <a href="{{ route('frontend.blog.index') }}" class="btn btn-danger w-100">
+                                    <a href="{{ route('user.blog.index') }}" class="btn btn-danger w-100">
                                         <i class="fa-solid fa-broom"></i> Clear
                                     </a>
                                 </div>
@@ -103,21 +103,21 @@
                                                     <input type="checkbox" class="form-check-input status-toggle"
                                                         data-id="{{ $blog->id }}"
                                                         {{ $blog->is_published == 1 ? 'checked' : '' }}
-                                                        data-url="{{ route('frontend.blog.status', $blog->id) }}">
+                                                        data-url="{{ route('user.blog.status', $blog->id) }}">
                                                     <label class="form-check-label"></label>
                                                 </div>
                                             </td>
                                             <td>{{ $blog->created_at->format('d-m-Y') }}</td>
                                             <td>
                                                 <div class="d-flex gap-5">
-                                                    <a href="{{ route('frontend.blog.edit', $blog->id) }}"
+                                                    <a href="{{ route('user.blog.edit', $blog->id) }}"
                                                         class="btn btn-sm btn-warning w-40 tooltip-btn"
                                                         data-tooltip="Edit Blog">
                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                     </a>
                                                     <form id="delete-form-{{ $blog->id }}"
-                                                        action="{{ route('frontend.blog.destroy', $blog->id) }}"
-                                                        method="POST" class="w-40">
+                                                        action="{{ route('user.blog.destroy', $blog->id) }}" method="POST"
+                                                        class="w-40">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="button"
