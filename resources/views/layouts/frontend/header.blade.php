@@ -97,7 +97,20 @@
                                 </ul>
                             </li>
                             <li><a href="/"> Product </a></li>
-                            <li><a href="/"> Blog </a></li>
+
+                            <li><a href="#"> Blog <i class="fa-solid fa-chevron-down"></i></a>
+                                <ul class="dropdown">
+                                    <a href="/">
+                                        <li>Blog</li>
+                                    </a>
+                                    <a href="{{ route('frontend.blog.category.index') }}">
+                                        <li>Category</li>
+                                    </a>
+                                </ul>
+                            </li>
+
+
+
                             <li><a href="/"> Contact Us </a></li>
                         </ul>
 
