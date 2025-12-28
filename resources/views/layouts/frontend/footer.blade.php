@@ -7,7 +7,9 @@
         <div class="row">
             <div class="col-md-8 col-lg-4">
                 <div class="logo mb-30">
-                    <img src="{{ config('company.logo') }}" alt="" class="img-fluid" />
+                    <a href="{{ route('frontend.home') }}"><img src="{{ config('company.logo') }}" alt=""
+                            class="img-fluid" /></a>
+
                 </div>
 
                 <div class="paragraph mb-20">
@@ -27,11 +29,11 @@
                 <h3 class="heading3">Link</h3>
 
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="{{ route('frontend.home') }}">Home</a></li>
                     <li><a href="/">About Us</a></li>
                     <li><a href="/">Products</a></li>
                     <li><a href="/">Contact Us</a></li>
-                    <li><a href="/">Blog</a></li>
+                    <li><a href="{{ route('frontend.blogs') }}">Blog</a></li>
                 </ul>
             </div>
             <div class="col-md-8 col-lg-3">
@@ -72,7 +74,7 @@
 
     <div class="container copyright">
         <div class="d-flex py-3 justify-content-between align-items-center">
-            <div class="paragraph">Copyright & Design by SolPlant-2023</div>
+            <div class="paragraph">Copyright © 2025 {{ config('company.name') }}. All rights reserved.</div>
 
             <div class="d-flex">
                 <div class="card-wrapper">
@@ -197,7 +199,7 @@
         <!-- Fixed Footer -->
         <div class="border-top p-3 bg-white">
             <div class="total">
-                <p>Subtotal: <span class="cartTotalAmount">$0.00</span></p>
+                <p>Subtotal: <span class="cartTotalAmount">0.00</span></p>
             </div>
             <div class="btn-box">
                 <a href="{{ route('frontend.checkout.index') }}" class="button-1">Checkout</a>

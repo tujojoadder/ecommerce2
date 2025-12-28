@@ -78,7 +78,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title">{{ $pageTitle }}</h4>
                         <div>
-                            <a href="{{ route('user.blog.create') }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('user.blog.create') }}" class="btn btn-primary ">
                                 <i class="fas fa-plus-square"></i> Add new
                             </a>
                         </div>
@@ -111,8 +111,8 @@
                                 <!-- Published Date -->
                                 <div class="col-md-3">
                                     <label class="form-label">Published Date</label>
-                                    <input type="date" name="published_date" class="form-control"
-                                        value="{{ request('published_date') }}">
+                                    <input type="text" name="published_date" class="form-control fc-datepicker"
+                                        placeholder="02/12/2025" value="{{ request('published_date') }}">
                                 </div>
 
                                 <!-- Buttons -->

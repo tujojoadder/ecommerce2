@@ -9,7 +9,7 @@
                     </li>
                     <li>
                         <i class="fa-solid fa-envelope"></i>
-                        <a href="{{ config('company.email') }}">{{ config('company.email') }}</a>
+                        <a href="javascript:void(0)">{{ config('company.email') }}</a>
                     </li>
                 </ul>
 
@@ -38,28 +38,16 @@
             <div class="container">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <div class="logo">
-                        <a href="/">
+                        <a href="{{ route('frontend.home') }}">
 
-                            <img class="img-fluid" src=" {{ config('company.logo') }}" alt="" />
+                            <img width="200px" class="img-fluid" src=" {{ config('company.logo') }}" alt="" />
                         </a>
                     </div>
 
                     <div class="menus">
                         <ul class="menu">
-                            <li>
-                                <a href="#">
-                                    Home <i class="fa-solid fa-chevron-down"></i>
-                                </a>
 
-                                <ul class="dropdown">
-                                    <a href="/">
-                                        <li>Home 1</li>
-                                    </a>
-                                    <a href="/">
-                                        <li>Home 2</li>
-                                    </a>
-                                </ul>
-                            </li>
+                            <li><a href="/"> Home </a></li>
                             <li><a href="/"> About Us </a></li>
                             <li>
                                 <a href="#">
@@ -70,13 +58,13 @@
                                     <a href="/">
                                         <li>Cart</li>
                                     </a>
-                                    <a href="/">
+                                    {{--  <a href="/">
                                         <li>Change Password</li>
-                                    </a>
+                                    </a> --}}
                                     <a href="/">
                                         <li>Login</li>
                                     </a>
-                                    <a href="/">
+                                    {{-- <a href="/">
                                         <li>Order Details</li>
                                     </a>
                                     <a href="/">
@@ -84,13 +72,13 @@
                                     </a>
                                     <a href="/">
                                         <li>Order Tracking</li>
-                                    </a>
+                                    </a> --}}
                                     <a href="/">
                                         <li>Payment</li>
                                     </a>
-                                    <a href="/">
+                                    {{--     <a href="/">
                                         <li>Profile</li>
-                                    </a>
+                                    </a> --}}
                                     <a href="/">
                                         <li>Sign Up</li>
                                     </a>
@@ -145,17 +133,10 @@
 
             <div class="accordion_wrapper">
                 <div class="accordion">
-                    <div class="heading">
+
+                    <a href="/">
                         <h3 class="heading3">Home</h3>
-                    </div>
-                    <div class="contents">
-                        <a href="/">
-                            <h3 class="heading3">Home1</h3>
-                        </a>
-                        <a href="/">
-                            <h3 class="heading3">Home2</h3>
-                        </a>
-                    </div>
+                    </a>
                     <a href="/">
                         <h3 class="heading3">Product</h3>
                     </a>

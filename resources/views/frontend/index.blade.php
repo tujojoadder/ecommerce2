@@ -173,8 +173,9 @@
                                     <a href="{{ route('frontend.product.item', $product->id) }}">{{ $product->name }}</a>
                                 </p>
                                 <p class="card-price">
-                                    {{ $product->selling_price }}৳ -
-                                    <span class="text-decoration-line-through"> {{ $product->main_price }}৳ </span>
+                                    {{ $product->selling_price }}{{ config('company.currency_symbol') }} -
+                                    <span class="text-decoration-line-through">
+                                        {{ $product->main_price }}{{ config('company.currency_symbol') }} </span>
                                 </p>
                             </div>
                         </div>
@@ -225,8 +226,10 @@
                                     <a href="{{ route('frontend.product.item', $product->id) }}">{{ $product->name }}</a>
                                 </p>
                                 <p class="card-price">
-                                    {{ $product->selling_price }}৳ -
-                                    <span class="text-decoration-line-through">{{ $product->main_price }}৳ </span>
+                                    {{ $product->selling_price }}{{ config('company.currency_symbol') }} -
+                                    <span
+                                        class="text-decoration-line-through">{{ $product->main_price }}{{ config('company.currency_symbol') }}
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -277,8 +280,10 @@
                                     <a href="{{ route('frontend.product.item', $product->id) }}">{{ $product->name }}</a>
                                 </p>
                                 <p class="card-price">
-                                    {{ $product->selling_price }}৳ -
-                                    <span class="text-decoration-line-through">{{ $product->main_price }}৳ </span>
+                                    {{ $product->selling_price }}{{ config('company.currency_symbol') }} -
+                                    <span
+                                        class="text-decoration-line-through">{{ $product->main_price }}{{ config('company.currency_symbol') }}
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -363,7 +368,7 @@
                         <div class="paragraph text-center">
                             {{ text_limit($product->description) }}
                         </div>
-                        <h3 class="heading3"> {{ $product->selling_price }}৳</h3>
+                        <h3 class="heading3"> {{ $product->selling_price }}{{ config('company.currency_symbol') }}</h3>
                     </div>
                 @endforeach
 
@@ -467,8 +472,8 @@
                                     href="{{ route('frontend.product.item', $product->id) }}">{{ Str::limit($product->name, 40, '...') }}</a>
                             </p>
                             <p class="card-price">
-                                {{ $product->selling_price }}৳ - <span
-                                    class="text-decoration-line-through">{{ $product->main_price }}৳</span>
+                                {{ $product->selling_price }}{{ config('company.currency_symbol') }} - <span
+                                    class="text-decoration-line-through">{{ $product->main_price }}{{ config('company.currency_symbol') }}</span>
                             </p>
                             <div class="top-card-icon">
                                 <a href="#">
@@ -565,7 +570,7 @@
                         <img src="{{ asset('frontend/assets/images/home/contact/truck.png') }}" alt="" />
                         <div class="contact-card-text">
                             <p class="contact-head">Free Shipping Order</p>
-                            <p class="contact-text">On orders over $100</p>
+                            <p class="contact-text">On orders over 100{{ config('company.currency_symbol') }}</p>
                         </div>
                     </div>
                 </div>

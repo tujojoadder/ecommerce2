@@ -13,8 +13,8 @@
             <div class="row">
 
                 @foreach ($blogs as $blog)
-                    <div class="col-md-6">
-                        <img width="670px" height="398px" src="{{ asset('storage/blog/' . $blog->image) }}" alt="" />
+                    <div class="col-md-6 mt-4">
+                        <img width="670px" height="300px" src="{{ asset('storage/blog/' . $blog->image) }}" alt="" />
 
                         <a href="{{ route('frontend.frontend.blog.show', $blog->id) }}">
                             <h3 class="heading3 mt-20">{!! text_limit($blog->title) !!}</h3>
